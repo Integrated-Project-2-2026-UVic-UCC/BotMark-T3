@@ -137,7 +137,7 @@ void LocalizadorNode::procesar_beacons(pcl::PointCloud<pcl::PointXYZI>::Ptr clou
         // Como si estuvieras definiendo dos variables en una misma linea -> float num1, num2;
         Eigen::Vector2f min_pt(999, 999), max_pt(-999, -999); 
 
-        for (auto idx : indices_grupo.indices) {
+        for (auto idx : indices_grupo.indices) { // Encontrar punto mas lejano/cercano y punto mas derecha/izquierda. para poder sacar el ancho.
             const auto& p = cloud_brillante->points[idx];
             if (p.x < min_pt.x()) min_pt.x() = p.x;
             if (p.y < min_pt.y()) min_pt.y() = p.y;
@@ -148,13 +148,11 @@ void LocalizadorNode::procesar_beacons(pcl::PointCloud<pcl::PointXYZI>::Ptr clou
         // Calculamos el ancho del objeto usando la distancia euclidiana de Eigen
         float ancho = (max_pt - min_pt).norm();
 
-        // 5. ¿Mide los 10 cm sagrados? (Damos un margen de error de 3cm)
+        // Comprobar si es baliza con el ancho dando un margen
         if (ancho > 0.07 && ancho < 0.13) {
+            // Encontrar centros.
             float centro_x = (min_pt.x() + max_pt.x()) / 2.0;
             float centro_y = (min_pt.y() + max_pt.y()) / 2.0;
-            
-            RCLCPP_INFO(this->get_logger(), "¡Baliza detectada en: X=%.2f, Y=%.2f!", centro_x, centro_y);
-            // Aquí guardarías estos centros para la triangulación final
         }
     }
 }
