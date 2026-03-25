@@ -59,10 +59,11 @@ To achieve this, we will fulfill the following requirements:
 
 
 ## <picture><img src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width = 30px></picture> Development Status
-**Current Phase:** 🚩Milestone 1🚩
-- Electronical and mechanical design
-- Programm robot movement control
-- Material list
+**Current Phase:** 🚩Milestone 3🚩
+- Design sand funnel
+- Solder components on the test PCB
+- Programm Lidar triangulation
+- Milestone 3 - Mid term presentation
 
 
 ## <img src='https://raw.githubusercontent.com/ShahriarShafin/ShahriarShafin/main/Assets/handshake.gif' width="30px"> Team
