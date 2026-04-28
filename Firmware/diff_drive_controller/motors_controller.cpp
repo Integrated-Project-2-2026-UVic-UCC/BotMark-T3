@@ -11,26 +11,24 @@ void MotorsController::begin() {
     pinMode(_BIN2, OUTPUT);
 
     // Configurar el canal PWM para el motor A y B
-    ledcSetup(0, 20000, 8); 
-    ledcSetup(1, 20000, 8); 
     // Canal 0 -> generador de pwm que tiene la esp32. por eso se usa ledc en vez de analogwrite. hay de 0-15 canales.
     // 20kHz -> Es lo suficientemente alto para ser inaudible i lo suficientemente bajo para no generar demasiado calor por pérdidas de conmutación en el driver i ser fino.
     // 8 bits -> define tus pasos de velocidad. Con 8 bits, tienes 256 niveles (de 0 a 255) de sobras.
-    ledcAttachPin(_PWMA, 0); // Pin PWMA al canal 0
-    ledcAttachPin(_PWMB, 1); // Pin PWMB al canal 1
+    ledcAttach(_PWMA, 20000, 8); 
+    ledcAttach(_PWMB, 20000, 8);
 }
 
 void MotorsController::move(int velA, int velB) {
-    // --- Escalado Inteligente ---
     apply_speed_limits(velA, velB);
 
-    // --- Ejecución ---
-    setMotor(_AIN1, _AIN2, 0, velA); // Motor A en Canal 0
-    setMotor(_BIN1, _BIN2, 1, velB); // Motor B en Canal 1
+    setMotor(_AIN1, _AIN2, _PWMA, velA); 
+    setMotor(_BIN1, _BIN2, _PWMB, -velB); 
 }
 
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Private
+
 void MotorsController::apply_speed_limits(int &velA, int &velB) {
-    // --- Escalado Inteligente ---
     int max_speed = max(abs(velA), abs(velB));
     if (max_speed > 255) {
         float scaling_factor = 255.0 / max_speed;
@@ -39,10 +37,9 @@ void MotorsController::apply_speed_limits(int &velA, int &velB) {
     }
 }
 
-// Este es el nuevo método privado que simplifica todo
-void MotorsController::setMotor(int IN1, int IN2, int channel, int speed) {
+void MotorsController::setMotor(int IN1, int IN2, int pin_pwm, int speed) {
     // Escribimos en los pines directamente el resultado de la comparación
     digitalWrite(IN1, speed > 0); 
     digitalWrite(IN2, speed < 0);
-    ledcWrite(channel, abs(speed));
+    ledcWrite(pin_pwm, abs(speed));
 }

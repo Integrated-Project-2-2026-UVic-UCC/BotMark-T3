@@ -38,14 +38,12 @@ private:
     // Variables de salida (resultados)
     float _velIzq = 0;
     float _velDer = 0;
-    float _distIzq = 0;
-    float _distDer = 0;
+    float _totaldistIzq = 0;
+    float _totaldistDer = 0;
 
 public:
     // Constructor: recibe las configuraciones y las referencias a los objetos encoder
-    EncoderHandler(EncoderConfig configDer, EncoderConfig configIzq, 
-                   ESP32Encoder &encDer, ESP32Encoder &encIzq, 
-                   RobotPhysics phys);
+    EncoderHandler(EncoderConfig configDer, EncoderConfig configIzq, RobotPhysics phys);
 
     // Configura el hardware y los filtros
     void begin();

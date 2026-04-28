@@ -4,24 +4,23 @@ EncoderHandler::EncoderHandler(EncoderConfig configDer, EncoderConfig configIzq,
     _pinDerA = configDer.pinA; _pinDerB = configDer.pinB;
     _pinIzqA = configIzq.pinA; _pinIzqB = configIzq.pinB;
 
-    // Distancia por cada pulso (m)
+    // Distancia que avanza por cada pulso (metros)
     _metersPerTick = (PI * phys.wheelDiameter) / (phys.ppr * phys.gearRatio * 4.0);
 }
 
 void EncoderHandler::begin(){
-    // Activar el pull up, para que mientras no detecte nada no se quede flotando. suelen ser low al detectar (conecta a gnd) i high sin conectar. 
+    // Activar el pull up, para que mientras no detecte nada no se quede flotando. low al detectar.
     ESP32Encoder::useInternalWeakPullResistors = puType::up;
 
-    // Configura los pines (Fase A, Fase B)
+    // Configura los pines (Fase A, Fase B). Al poner fullquad tiene en cuenta subida i bajada de los 2 pines, lo que da una resolucion x4.
     _encoderIzq.attachFullQuad(_pinIzqA, _pinIzqB);
     _encoderDer.attachFullQuad(_pinDerA, _pinDerB);
     
-    // Opcional: Filtro para evitar el "tembleque high-low-high-low" que decías
-    // Ignora pulsos de menos de 100 ciclos de reloj (ajustar entre 100 y 500)
+    // Ignora pulsos de menos de 100 ciclos de reloj para evitar "high-low-high-low" por ruido (ajustar entre 100 y 500)
     _encoderIzq.setFilter(100); 
     _encoderDer.setFilter(100);
 
-    // Inicialización de tiempos para evitar saltos en el primer update
+    // Inicialización de tiempos para evitar saltos en el primer update (tiempo de la ultima actualizacion, ticks pasados contados por el encoder)
     _lastUpdateTime = micros();
     _lastTicksIzq = _encoderIzq.getCount();
     _lastTicksDer = _encoderDer.getCount();
@@ -29,21 +28,30 @@ void EncoderHandler::begin(){
 
 void EncoderHandler::update() {
     unsigned long currentTime = micros();
-    float deltaTime = (currentTime - _lastUpdateTime) / 1000000.0; // Convertir a segundos
+    float time_increased = (micros() - _lastUpdateTime) / 1000000.0; // (segundos)
 
-    if (deltaTime >= 0.01) { // Actualizar máximo cada 10ms para evitar ruidos
+    if (time_increased >= 0.01) { 
+
+        //ticks totales
         long currentTicksIzq = _encoderIzq.getCount();
         long currentTicksDer = _encoderDer.getCount();
 
-        // Velocidad = (Delta Pasos * Factor Metros) / Delta Tiempo
-        _velIzq = ((currentTicksIzq - _lastTicksIzq) * _metersPerTick) / deltaTime;
-        _velDer = ((currentTicksDer - _lastTicksDer) * _metersPerTick) / deltaTime;
+        // numero de ticks en la ronda
+        long left_ticks_increased = currentTicksIzq - _lastTicksIzq;
+        long right_ticks_increased = currentTicksDer - _lastTicksDer;
 
-        // Odometría acumulada (Distancia total en metros)
-        _distIzq += deltaIzq * _metersPerTick;
-        _distDer += deltaDer * _metersPerTick;
+        // dist recorrida (numero de ticks * distancia recorreguda en cada tick)
+        long left_dist_increased =  left_ticks_increased * _metersPerTick;
+        long right_dist_increased = right_ticks_increased * _metersPerTick;
 
-        // Guardar estado para el próximo cálculo
+        // Velocidad instantánea (dist recorrida/ tiempo)
+        _velIzq = left_dist_increased / time_increased;
+        _velDer = right_dist_increased / time_increased;
+
+        // Distancia total
+        _totaldistIzq += left_dist_increased;
+        _totaldistDer += right_dist_increased;
+
         _lastTicksIzq = currentTicksIzq;
         _lastTicksDer = currentTicksDer;
         _lastUpdateTime = currentTime;
@@ -52,5 +60,5 @@ void EncoderHandler::update() {
 
 float EncoderHandler::getVelocityIzq() { return _velIzq; }
 float EncoderHandler::getVelocityDer() { return _velDer; }
-float EncoderHandler::getDistIzq() { return _distIzq; }
-float EncoderHandler::getDistDer() { return _distDer; }
+float EncoderHandler::getDistIzq() { return _totaldistIzq; }
+float EncoderHandler::getDistDer() { return _totaldistDer; }
