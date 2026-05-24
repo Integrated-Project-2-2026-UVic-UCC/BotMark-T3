@@ -1,42 +1,48 @@
 #include <Arduino.h>
-#include "zenoh_manager.h"
+#include "imu_manager.h"
 
-// Configuración de red
-const char* ssid = "MiFibra-9651";
-const char* pass = "i6xKuQxm";
-const char* router_ip = "tcp/192.168.1.51:7447"; // La IP del ordenador en la red
+// Instancia global de tu gestor de IMU
+IMUManager imu;
 
-ZenohManager zm;
+// Variable para controlar el tiempo de impresión sin bloquear la CPU
+unsigned long lastPrint = 0;
 
 void setup() {
     Serial.begin(115200);
+    Serial.println("--- Iniciando Prueba de IMU ICM-20948 ---");
 
-    // Inicializamos el manager
-    if (zm.begin(ssid, pass, router_ip)) {
-        Serial.println("¡Zenoh Manager iniciado correctamente!");
-    } else {
-        Serial.println("Error al iniciar Zenoh.");
+    // NOTA: Ya no llamamos a Wire.begin() aquí porque tu método 
+    // imu.begin() ya se encarga de abrir el puerto I2C en los pines 21 y 22.
+    
+    // Iniciar y verificar la conexión
+    if (!imu.begin()) {
+        Serial.println("Error: No se pudo encontrar la ICM-20948. Revisa el cableado (0x68).");
+        while (1); // Detener ejecución si hay fallo físico
     }
+
+    Serial.println("IMU iniciada. Mantén el robot quieto para fijar el cero inicial...");
+    delay(2000); // Pequeña pausa para estabilizar lecturas
+    
+    // Fijar el "Frente" del robot
+    imu.resetYaw();
+    Serial.println("Yaw reseteado a 0. ¡Ya puedes girar el sensor!");
 }
 
 void loop() {
-    if (zm.isConnected()) {
-        // Simulamos datos de sensores
-        SensorData datos;
-        datos.ticks_izquierdo = millis() / 100;
-        datos.ticks_derecho = millis() / 100;
-        datos.accel_x = 0.0;
-        datos.accel_y = 0.0;
-        datos.accel_z = 9.8;
-        datos.gyro_x = 0.0;
-        datos.gyro_y = 0.0;
-        datos.gyro_z = 0.0;
+    // 1. Leer los datos crudos y calcular las matemáticas (atan2, normalización)
+    imu.update();
 
-        // Publicamos
-        zm.publishSensors(datos);
+    // 2. Imprimir datos cada 100ms (10 veces por segundo)
+    if (millis() - lastPrint > 100) {
         
-        Serial.println("Datos enviados por Zenoh...");
+        // Obtener el valor ya procesado (-PI a PI)
+        float yaw = imu.getYawRad();
+        
+        Serial.print("Yaw (Rad): ");
+        Serial.print(yaw, 4);
+        Serial.print(" | Yaw (Deg): ");
+        Serial.println(yaw * (180.0f / PI));
+
+        lastPrint = millis();
     }
-    
-    delay(100); // Enviamos a 10Hz
 }

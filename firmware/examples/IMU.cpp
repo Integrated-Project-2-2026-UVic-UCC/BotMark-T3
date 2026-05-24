@@ -1,36 +1,41 @@
 #include <Arduino.h>
-
 #include "imu_manager.h"
 
+// Instancia global de tu gestor de IMU
 IMUManager imu;
+
+// Variable para controlar el tiempo de impresión sin bloquear la CPU
 unsigned long lastPrint = 0;
 
 void setup() {
-    // WT901B es la imu vieja, la actual es MPU9250
     Serial.begin(115200);
-    Serial.println("--- Iniciando Prueba de IMU ---");
+    Serial.println("--- Iniciando Prueba de IMU ICM-20948 ---");
 
-    Wire.begin();
+    // NOTA: Ya no llamamos a Wire.begin() aquí porque tu método 
+    // imu.begin() ya se encarga de abrir el puerto I2C en los pines 21 y 22.
     
+    // Iniciar y verificar la conexión
     if (!imu.begin()) {
-        Serial.println("Error: No se pudo encontrar el MPU9250. Revisa el cableado (0x68).");
-        while (1);
+        Serial.println("Error: No se pudo encontrar la ICM-20948. Revisa el cableado (0x68).");
+        while (1); // Detener ejecución si hay fallo físico
     }
 
-    Serial.println("IMU iniciada. Mantén el robot quieto para el offset inicial.");
-    delay(2000);
+    Serial.println("IMU iniciada. Mantén el robot quieto para fijar el cero inicial...");
+    delay(2000); // Pequeña pausa para estabilizar lecturas
     
-    // Seteamos el cero inicial
+    // Fijar el "Frente" del robot
     imu.resetYaw();
-    Serial.println("Yaw reseteado a 0. ¡Ya puedes mover la IMU!");
+    Serial.println("Yaw reseteado a 0. ¡Ya puedes girar el sensor!");
 }
 
 void loop() {
-    // Actualizar los filtros internos de la IMU
+    // 1. Leer los datos crudos y calcular las matemáticas (atan2, normalización)
     imu.update();
 
-    // Imprimir datos cada 100ms para no saturar el puerto serie
+    // 2. Imprimir datos cada 100ms (10 veces por segundo)
     if (millis() - lastPrint > 100) {
+        
+        // Obtener el valor ya procesado (-PI a PI)
         float yaw = imu.getYawRad();
         
         Serial.print("Yaw (Rad): ");

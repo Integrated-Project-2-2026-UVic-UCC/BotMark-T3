@@ -2,13 +2,13 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-#include "MPU9250.h" // Incluimos la nueva librería
+#include <ICM_20948.h> // Nueva librería para el ICM-20948
 
 class IMUManager {
     private:
-        MPU9250 mpu;                // Creamos el objeto de la MPU-9250
-        float _currentYaw = 0;      // Yaw actual en Radianes
-        float _yawOffset = 0;       // Offset acumulado para correcciones de pose
+        ICM_20948_I2C imu;          // Objeto del nuevo sensor
+        float _currentYaw = 0;      // Yaw actual en radianes
+        float _yawOffset = 0;       // Offset acumulado para el "reset"
 
     public:
         // Constructor vacío
@@ -17,7 +17,7 @@ class IMUManager {
         // Inicializa el bus I2C y verifica la conexión con el sensor
         bool begin();
 
-        // Lee los registros del sensor y actualiza el valor de Yaw
+        // Lee el magnetómetro y actualiza el valor de Yaw
         void update();
 
         // Devuelve la orientación actual en radianes (-PI a PI)
