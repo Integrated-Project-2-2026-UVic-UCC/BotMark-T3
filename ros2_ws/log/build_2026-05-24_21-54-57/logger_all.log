@@ -1,0 +1,462 @@
+[0.067s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.067s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7ddfcc53e6e0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ddfcc53d870>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ddfcc53d870>>, mixin_verb=('build',))
+[0.182s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.182s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.182s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.182s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.182s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.182s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.182s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/didac/exchange/Team3/ros2_ws'
+[0.182s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.183s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/beacon_locator) by extensions ['ignore', 'ignore_ament_install']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/beacon_locator) by extension 'ignore'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/beacon_locator) ignored
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extension 'ignore'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extension 'ignore_ament_install'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extensions ['colcon_pkg']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extension 'colcon_pkg'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extensions ['colcon_meta']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extension 'colcon_meta'
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extensions ['ros']
+[0.192s] Level 1:colcon.colcon_core.package_identification:_identify(src/controller_pkg) by extension 'ros'
+[0.194s] DEBUG:colcon.colcon_core.package_identification:Package 'src/controller_pkg' with type 'ros.ament_cmake' and name 'controller_pkg'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'ignore'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'ignore_ament_install'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['colcon_pkg']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'colcon_pkg'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['colcon_meta']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'colcon_meta'
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extensions ['ros']
+[0.194s] Level 1:colcon.colcon_core.package_identification:_identify(src/ldlidar_stl_ros2) by extension 'ros'
+[0.204s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ldlidar_stl_ros2' with type 'ros.ament_cmake' and name 'ldlidar_stl_ros2'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extensions ['ignore', 'ignore_ament_install']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extension 'ignore'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extension 'ignore_ament_install'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extensions ['colcon_pkg']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extension 'colcon_pkg'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extensions ['colcon_meta']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extension 'colcon_meta'
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extensions ['ros']
+[0.204s] Level 1:colcon.colcon_core.package_identification:_identify(src/mission_manager) by extension 'ros'
+[0.205s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mission_manager' with type 'ros.ament_python' and name 'mission_manager'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extension 'ignore'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extension 'ignore_ament_install'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extensions ['colcon_pkg']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extension 'colcon_pkg'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extensions ['colcon_meta']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extension 'colcon_meta'
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extensions ['ros']
+[0.205s] Level 1:colcon.colcon_core.package_identification:_identify(src/obstacle_detector) by extension 'ros'
+[0.206s] DEBUG:colcon.colcon_core.package_identification:Package 'src/obstacle_detector' with type 'ros.ament_cmake' and name 'obstacle_detector'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extension 'ignore'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extension 'ignore_ament_install'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extensions ['colcon_pkg']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extension 'colcon_pkg'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extensions ['colcon_meta']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extension 'colcon_meta'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extensions ['ros']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/robot_bringup) by extension 'ros'
+[0.206s] DEBUG:colcon.colcon_core.package_identification:Package 'src/robot_bringup' with type 'ros.ament_cmake' and name 'robot_bringup'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extension 'ignore'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extension 'ignore_ament_install'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extensions ['colcon_pkg']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extension 'colcon_pkg'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extensions ['colcon_meta']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extension 'colcon_meta'
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extensions ['ros']
+[0.207s] Level 1:colcon.colcon_core.package_identification:_identify(src/zenoh_bridge) by extension 'ros'
+[0.207s] DEBUG:colcon.colcon_core.package_identification:Package 'src/zenoh_bridge' with type 'ros.ament_cmake' and name 'zenoh_bridge'
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.225s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.225s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.226s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/didac/exchange/Team3/ros2_ws/install
+[0.227s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 278 installed packages in /opt/ros/humble
+[0.228s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'cmake_args' from command line to 'None'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'cmake_target' from command line to 'None'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.252s] Level 5:colcon.colcon_core.verb:set package 'controller_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.253s] DEBUG:colcon.colcon_core.verb:Building package 'controller_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg', 'merge_install': False, 'path': '/home/didac/exchange/Team3/ros2_ws/src/controller_pkg', 'symlink_install': True, 'test_result_base': None}
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'cmake_args' from command line to 'None'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'cmake_target' from command line to 'None'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'cmake_clean_first' from command line to 'False'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'cmake_force_configure' from command line to 'False'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'ament_cmake_args' from command line to 'None'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'ldlidar_stl_ros2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.253s] DEBUG:colcon.colcon_core.verb:Building package 'ldlidar_stl_ros2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2', 'merge_install': False, 'path': '/home/didac/exchange/Team3/ros2_ws/src/ldlidar_stl_ros2', 'symlink_install': True, 'test_result_base': None}
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'cmake_args' from command line to 'None'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'cmake_target' from command line to 'None'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.253s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'cmake_clean_cache' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'cmake_clean_first' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'cmake_force_configure' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'ament_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'catkin_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'mission_manager' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.254s] DEBUG:colcon.colcon_core.verb:Building package 'mission_manager' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/didac/exchange/Team3/ros2_ws/build/mission_manager', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/didac/exchange/Team3/ros2_ws/install/mission_manager', 'merge_install': False, 'path': '/home/didac/exchange/Team3/ros2_ws/src/mission_manager', 'symlink_install': True, 'test_result_base': None}
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'cmake_target' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'cmake_clean_cache' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'cmake_clean_first' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'cmake_force_configure' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'ament_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'catkin_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'obstacle_detector' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.254s] DEBUG:colcon.colcon_core.verb:Building package 'obstacle_detector' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector', 'merge_install': False, 'path': '/home/didac/exchange/Team3/ros2_ws/src/obstacle_detector', 'symlink_install': True, 'test_result_base': None}
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'cmake_target' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'robot_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.254s] DEBUG:colcon.colcon_core.verb:Building package 'robot_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup', 'merge_install': False, 'path': '/home/didac/exchange/Team3/ros2_ws/src/robot_bringup', 'symlink_install': True, 'test_result_base': None}
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'cmake_target' from command line to 'None'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'cmake_clean_cache' from command line to 'False'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'cmake_clean_first' from command line to 'False'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'cmake_force_configure' from command line to 'False'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'ament_cmake_args' from command line to 'None'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'catkin_cmake_args' from command line to 'None'
+[0.255s] Level 5:colcon.colcon_core.verb:set package 'zenoh_bridge' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.255s] DEBUG:colcon.colcon_core.verb:Building package 'zenoh_bridge' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge', 'merge_install': False, 'path': '/home/didac/exchange/Team3/ros2_ws/src/zenoh_bridge', 'symlink_install': True, 'test_result_base': None}
+[0.255s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.255s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.256s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/didac/exchange/Team3/ros2_ws/src/controller_pkg' with build type 'ament_cmake'
+[0.256s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/didac/exchange/Team3/ros2_ws/src/controller_pkg'
+[0.257s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.257s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.257s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.261s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/didac/exchange/Team3/ros2_ws/src/ldlidar_stl_ros2' with build type 'ament_cmake'
+[0.261s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/didac/exchange/Team3/ros2_ws/src/ldlidar_stl_ros2'
+[0.262s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.262s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.264s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/didac/exchange/Team3/ros2_ws/src/mission_manager' with build type 'ament_python'
+[0.264s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_manager', 'ament_prefix_path')
+[0.264s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/hook/ament_prefix_path.ps1'
+[0.265s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/hook/ament_prefix_path.dsv'
+[0.265s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/hook/ament_prefix_path.sh'
+[0.266s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.266s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.268s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/didac/exchange/Team3/ros2_ws/src/obstacle_detector' with build type 'ament_cmake'
+[0.268s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/didac/exchange/Team3/ros2_ws/src/obstacle_detector'
+[0.268s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.268s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.270s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/didac/exchange/Team3/ros2_ws/src/robot_bringup' with build type 'ament_cmake'
+[0.270s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/didac/exchange/Team3/ros2_ws/src/robot_bringup'
+[0.270s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.270s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.273s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/didac/exchange/Team3/ros2_ws/src/zenoh_bridge' with build type 'ament_cmake'
+[0.273s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/didac/exchange/Team3/ros2_ws/src/zenoh_bridge'
+[0.273s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.274s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.279s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/controller_pkg -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/controller_pkg
+[0.282s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/ldlidar_stl_ros2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2
+[0.517s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/didac/exchange/Team3/ros2_ws/src/mission_manager'
+[0.517s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.517s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.522s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/obstacle_detector -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector
+[0.523s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/robot_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/robot_bringup
+[0.530s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/zenoh_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge
+[1.048s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/mission_manager': PYTHONPATH=/home/didac/exchange/Team3/ros2_ws/build/mission_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/didac/exchange/Team3/ros2_ws/build/mission_manager/build --no-deps symlink_data
+[1.516s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/robot_bringup -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/robot_bringup
+[1.518s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/robot_bringup -- -j8 -l8
+[1.638s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/robot_bringup -- -j8 -l8
+[1.663s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/robot_bringup
+[1.694s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(robot_bringup)
+[1.697s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup' for CMake module files
+[1.701s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/robot_bringup' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/robot_bringup
+[1.702s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup' for CMake config files
+[1.702s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_bringup', 'cmake_prefix_path')
+[1.703s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/hook/cmake_prefix_path.ps1'
+[1.705s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/hook/cmake_prefix_path.dsv'
+[1.706s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/hook/cmake_prefix_path.sh'
+[1.707s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/bin'
+[1.708s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/lib/pkgconfig/robot_bringup.pc'
+[1.708s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/lib/python3.10/site-packages'
+[1.709s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/bin'
+[1.710s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.ps1'
+[1.715s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.dsv'
+[1.716s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.sh'
+[1.717s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.bash'
+[1.720s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.zsh'
+[1.728s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/colcon-core/packages/robot_bringup)
+[1.732s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(robot_bringup)
+[1.735s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup' for CMake module files
+[1.736s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup' for CMake config files
+[1.737s] Level 1:colcon.colcon_core.shell:create_environment_hook('robot_bringup', 'cmake_prefix_path')
+[1.738s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/hook/cmake_prefix_path.ps1'
+[1.742s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/hook/cmake_prefix_path.dsv'
+[1.742s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/hook/cmake_prefix_path.sh'
+[1.750s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/bin'
+[1.751s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/lib/pkgconfig/robot_bringup.pc'
+[1.751s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/lib/python3.10/site-packages'
+[1.752s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/bin'
+[1.756s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.ps1'
+[1.760s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.dsv'
+[1.766s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.sh'
+[1.771s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.bash'
+[1.775s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/robot_bringup/package.zsh'
+[1.776s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/robot_bringup/share/colcon-core/packages/robot_bringup)
+[2.043s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_manager', 'pythonpath_develop')
+[2.043s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/build/mission_manager/share/mission_manager/hook/pythonpath_develop.ps1'
+[2.044s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/mission_manager' returned '0': PYTHONPATH=/home/didac/exchange/Team3/ros2_ws/build/mission_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/didac/exchange/Team3/ros2_ws/build/mission_manager/build --no-deps symlink_data
+[2.047s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/build/mission_manager/share/mission_manager/hook/pythonpath_develop.dsv'
+[2.047s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/build/mission_manager/share/mission_manager/hook/pythonpath_develop.sh'
+[2.049s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager' for CMake module files
+[2.049s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager' for CMake config files
+[2.051s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib'
+[2.052s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/bin'
+[2.052s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/pkgconfig/mission_manager.pc'
+[2.053s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages'
+[2.053s] Level 1:colcon.colcon_core.shell:create_environment_hook('mission_manager', 'pythonpath')
+[2.053s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/hook/pythonpath.ps1'
+[2.054s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/hook/pythonpath.dsv'
+[2.055s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/hook/pythonpath.sh'
+[2.056s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/bin'
+[2.056s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(mission_manager)
+[2.057s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/package.ps1'
+[2.058s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/package.dsv'
+[2.062s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/package.sh'
+[2.062s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/package.bash'
+[2.063s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/mission_manager/package.zsh'
+[2.065s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/mission_manager/share/colcon-core/packages/mission_manager)
+[2.248s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/ldlidar_stl_ros2 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2
+[2.249s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2 -- -j8 -l8
+[2.277s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/controller_pkg -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/controller_pkg
+[2.279s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/controller_pkg -- -j8 -l8
+[2.830s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/obstacle_detector -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector
+[2.831s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/obstacle_detector -- -j8 -l8
+[2.878s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake /home/didac/exchange/Team3/ros2_ws/src/zenoh_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge
+[2.881s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge -- -j8 -l8
+[7.822s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2 -- -j8 -l8
+[7.823s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2
+[7.843s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ldlidar_stl_ros2)
+[7.843s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2' for CMake module files
+[7.844s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/ldlidar_stl_ros2
+[7.846s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2' for CMake config files
+[7.846s] Level 1:colcon.colcon_core.shell:create_environment_hook('ldlidar_stl_ros2', 'cmake_prefix_path')
+[7.846s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/hook/cmake_prefix_path.ps1'
+[7.847s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/hook/cmake_prefix_path.dsv'
+[7.848s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/hook/cmake_prefix_path.sh'
+[7.848s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/lib'
+[7.848s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/bin'
+[7.848s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/lib/pkgconfig/ldlidar_stl_ros2.pc'
+[7.849s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/lib/python3.10/site-packages'
+[7.849s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/bin'
+[7.850s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.ps1'
+[7.850s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.dsv'
+[7.851s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.sh'
+[7.851s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.bash'
+[7.852s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.zsh'
+[7.852s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/colcon-core/packages/ldlidar_stl_ros2)
+[7.853s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ldlidar_stl_ros2)
+[7.853s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2' for CMake module files
+[7.854s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2' for CMake config files
+[7.854s] Level 1:colcon.colcon_core.shell:create_environment_hook('ldlidar_stl_ros2', 'cmake_prefix_path')
+[7.854s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/hook/cmake_prefix_path.ps1'
+[7.855s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/hook/cmake_prefix_path.dsv'
+[7.855s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/hook/cmake_prefix_path.sh'
+[7.856s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/lib'
+[7.856s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/bin'
+[7.856s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/lib/pkgconfig/ldlidar_stl_ros2.pc'
+[7.857s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/lib/python3.10/site-packages'
+[7.857s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/bin'
+[7.858s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.ps1'
+[7.860s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.dsv'
+[7.860s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.sh'
+[7.861s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.bash'
+[7.861s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/ldlidar_stl_ros2/package.zsh'
+[7.862s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/ldlidar_stl_ros2/share/colcon-core/packages/ldlidar_stl_ros2)
+[12.293s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge -- -j8 -l8
+[12.294s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge
+[12.311s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(zenoh_bridge)
+[12.311s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge' for CMake module files
+[12.312s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge
+[12.312s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge' for CMake config files
+[12.313s] Level 1:colcon.colcon_core.shell:create_environment_hook('zenoh_bridge', 'cmake_prefix_path')
+[12.313s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/hook/cmake_prefix_path.ps1'
+[12.313s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/hook/cmake_prefix_path.dsv'
+[12.314s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/hook/cmake_prefix_path.sh'
+[12.314s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib'
+[12.314s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/bin'
+[12.314s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib/pkgconfig/zenoh_bridge.pc'
+[12.314s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib/python3.10/site-packages'
+[12.314s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/bin'
+[12.315s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.ps1'
+[12.315s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.dsv'
+[12.316s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.sh'
+[12.316s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.bash'
+[12.316s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.zsh'
+[12.316s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/colcon-core/packages/zenoh_bridge)
+[12.317s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(zenoh_bridge)
+[12.317s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge' for CMake module files
+[12.318s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge' for CMake config files
+[12.318s] Level 1:colcon.colcon_core.shell:create_environment_hook('zenoh_bridge', 'cmake_prefix_path')
+[12.318s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/hook/cmake_prefix_path.ps1'
+[12.319s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/hook/cmake_prefix_path.dsv'
+[12.320s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/hook/cmake_prefix_path.sh'
+[12.320s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib'
+[12.320s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/bin'
+[12.320s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib/pkgconfig/zenoh_bridge.pc'
+[12.320s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib/python3.10/site-packages'
+[12.321s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/bin'
+[12.321s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.ps1'
+[12.322s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.dsv'
+[12.322s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.sh'
+[12.322s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.bash'
+[12.323s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.zsh'
+[12.323s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/colcon-core/packages/zenoh_bridge)
+[14.196s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/obstacle_detector -- -j8 -l8
+[14.197s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/obstacle_detector
+[14.231s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(obstacle_detector)
+[14.232s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector' for CMake module files
+[14.232s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/obstacle_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/obstacle_detector
+[14.233s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector' for CMake config files
+[14.233s] Level 1:colcon.colcon_core.shell:create_environment_hook('obstacle_detector', 'cmake_prefix_path')
+[14.233s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/hook/cmake_prefix_path.ps1'
+[14.234s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/hook/cmake_prefix_path.dsv'
+[14.234s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/hook/cmake_prefix_path.sh'
+[14.234s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/lib'
+[14.234s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/bin'
+[14.234s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/lib/pkgconfig/obstacle_detector.pc'
+[14.235s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/lib/python3.10/site-packages'
+[14.235s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/bin'
+[14.235s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.ps1'
+[14.235s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.dsv'
+[14.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.sh'
+[14.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.bash'
+[14.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.zsh'
+[14.236s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/colcon-core/packages/obstacle_detector)
+[14.237s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(obstacle_detector)
+[14.237s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector' for CMake module files
+[14.237s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector' for CMake config files
+[14.237s] Level 1:colcon.colcon_core.shell:create_environment_hook('obstacle_detector', 'cmake_prefix_path')
+[14.237s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/hook/cmake_prefix_path.ps1'
+[14.238s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/hook/cmake_prefix_path.dsv'
+[14.238s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/hook/cmake_prefix_path.sh'
+[14.238s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/lib'
+[14.238s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/bin'
+[14.238s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/lib/pkgconfig/obstacle_detector.pc'
+[14.238s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/lib/python3.10/site-packages'
+[14.239s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/bin'
+[14.239s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.ps1'
+[14.239s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.dsv'
+[14.239s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.sh'
+[14.240s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.bash'
+[14.240s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/obstacle_detector/package.zsh'
+[14.240s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/obstacle_detector/share/colcon-core/packages/obstacle_detector)
+[15.301s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/controller_pkg -- -j8 -l8
+[15.303s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/controller_pkg
+[15.318s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(controller_pkg)
+[15.318s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg' for CMake module files
+[15.319s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/controller_pkg' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/controller_pkg
+[15.319s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg' for CMake config files
+[15.320s] Level 1:colcon.colcon_core.shell:create_environment_hook('controller_pkg', 'cmake_prefix_path')
+[15.320s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/hook/cmake_prefix_path.ps1'
+[15.321s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/hook/cmake_prefix_path.dsv'
+[15.321s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/hook/cmake_prefix_path.sh'
+[15.322s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/lib'
+[15.322s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/bin'
+[15.322s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/lib/pkgconfig/controller_pkg.pc'
+[15.322s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/lib/python3.10/site-packages'
+[15.323s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/bin'
+[15.323s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.ps1'
+[15.323s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.dsv'
+[15.323s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.sh'
+[15.324s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.bash'
+[15.324s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.zsh'
+[15.324s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/colcon-core/packages/controller_pkg)
+[15.324s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(controller_pkg)
+[15.325s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg' for CMake module files
+[15.325s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg' for CMake config files
+[15.325s] Level 1:colcon.colcon_core.shell:create_environment_hook('controller_pkg', 'cmake_prefix_path')
+[15.325s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/hook/cmake_prefix_path.ps1'
+[15.326s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/hook/cmake_prefix_path.dsv'
+[15.326s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/hook/cmake_prefix_path.sh'
+[15.326s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/lib'
+[15.326s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/bin'
+[15.326s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/lib/pkgconfig/controller_pkg.pc'
+[15.326s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/lib/python3.10/site-packages'
+[15.327s] Level 1:colcon.colcon_core.environment:checking '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/bin'
+[15.327s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.ps1'
+[15.327s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.dsv'
+[15.328s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.sh'
+[15.328s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.bash'
+[15.328s] INFO:colcon.colcon_core.shell:Creating package script '/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/controller_pkg/package.zsh'
+[15.328s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/didac/exchange/Team3/ros2_ws/install/controller_pkg/share/colcon-core/packages/controller_pkg)
+[15.329s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[15.329s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[15.329s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[15.329s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[15.333s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[15.333s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[15.333s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[15.343s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[15.343s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/didac/exchange/Team3/ros2_ws/install/local_setup.ps1'
+[15.344s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/didac/exchange/Team3/ros2_ws/install/_local_setup_util_ps1.py'
+[15.345s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/didac/exchange/Team3/ros2_ws/install/setup.ps1'
+[15.346s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/didac/exchange/Team3/ros2_ws/install/local_setup.sh'
+[15.346s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/didac/exchange/Team3/ros2_ws/install/_local_setup_util_sh.py'
+[15.347s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/didac/exchange/Team3/ros2_ws/install/setup.sh'
+[15.348s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/didac/exchange/Team3/ros2_ws/install/local_setup.bash'
+[15.348s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/didac/exchange/Team3/ros2_ws/install/setup.bash'
+[15.349s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/didac/exchange/Team3/ros2_ws/install/local_setup.zsh'
+[15.349s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/didac/exchange/Team3/ros2_ws/install/setup.zsh'

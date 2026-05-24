@@ -1,0 +1,17 @@
+running develop
+running egg_info
+creating mission_manager.egg-info
+writing mission_manager.egg-info/PKG-INFO
+writing dependency_links to mission_manager.egg-info/dependency_links.txt
+writing entry points to mission_manager.egg-info/entry_points.txt
+writing requirements to mission_manager.egg-info/requires.txt
+writing top-level names to mission_manager.egg-info/top_level.txt
+writing manifest file 'mission_manager.egg-info/SOURCES.txt'
+reading manifest file 'mission_manager.egg-info/SOURCES.txt'
+writing manifest file 'mission_manager.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages/mission-manager.egg-link (link to .)
+Installing mission_node script to /home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/mission_manager
+
+Installed /home/didac/exchange/Team3/ros2_ws/build/mission_manager
+running symlink_data

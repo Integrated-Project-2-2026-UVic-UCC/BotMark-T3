@@ -1,0 +1,25 @@
+[0.202s] Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge -- -j8 -l8
+[0.242s] [35m[1mConsolidate compiler generated dependencies of target zenoh_bridge_node[0m
+[0.259s] [100%] Built target zenoh_bridge_node
+[0.286s] Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --build /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge -- -j8 -l8
+[0.287s] Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge
+[0.292s] -- Install configuration: ""
+[0.292s] -- Execute custom install script
+[0.292s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/lib/zenoh_bridge/zenoh_bridge_node
+[0.293s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/include/zenoh_bridge/zenoh_bridge_node.hpp
+[0.293s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/ament_index/resource_index/package_run_dependencies/zenoh_bridge
+[0.293s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/ament_index/resource_index/parent_prefix_path/zenoh_bridge
+[0.293s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/environment/ament_prefix_path.sh
+[0.293s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/environment/ament_prefix_path.dsv
+[0.295s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/environment/path.sh
+[0.295s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/environment/path.dsv
+[0.295s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/local_setup.bash
+[0.295s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/local_setup.sh
+[0.295s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/local_setup.zsh
+[0.295s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/local_setup.dsv
+[0.295s] -- Symlinking: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.dsv
+[0.303s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/ament_index/resource_index/packages/zenoh_bridge
+[0.303s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/cmake/zenoh_bridgeConfig.cmake
+[0.303s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/cmake/zenoh_bridgeConfig-version.cmake
+[0.303s] -- Up-to-date symlink: /home/didac/exchange/Team3/ros2_ws/install/zenoh_bridge/share/zenoh_bridge/package.xml
+[0.314s] Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/didac/exchange/Team3/ros2_ws/install/mission_manager:/opt/ros/humble /usr/bin/cmake --install /home/didac/exchange/Team3/ros2_ws/build/zenoh_bridge

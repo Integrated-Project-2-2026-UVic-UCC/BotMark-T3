@@ -1,0 +1,17 @@
+[0.498s] Invoking command in '/home/didac/exchange/Team3/ros2_ws/build/mission_manager': PYTHONPATH=/home/didac/exchange/Team3/ros2_ws/build/mission_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/didac/exchange/Team3/ros2_ws/build/mission_manager/build --no-deps symlink_data
+[0.676s] running develop
+[0.793s] running egg_info
+[0.793s] writing mission_manager.egg-info/PKG-INFO
+[0.793s] writing dependency_links to mission_manager.egg-info/dependency_links.txt
+[0.793s] writing entry points to mission_manager.egg-info/entry_points.txt
+[0.793s] writing requirements to mission_manager.egg-info/requires.txt
+[0.793s] writing top-level names to mission_manager.egg-info/top_level.txt
+[0.794s] reading manifest file 'mission_manager.egg-info/SOURCES.txt'
+[0.795s] writing manifest file 'mission_manager.egg-info/SOURCES.txt'
+[0.796s] running build_ext
+[0.796s] Creating /home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages/mission-manager.egg-link (link to .)
+[0.796s] Installing mission_node script to /home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/mission_manager
+[0.796s] 
+[0.796s] Installed /home/didac/exchange/Team3/ros2_ws/build/mission_manager
+[0.796s] running symlink_data
+[0.816s] Invoked command in '/home/didac/exchange/Team3/ros2_ws/build/mission_manager' returned '0': PYTHONPATH=/home/didac/exchange/Team3/ros2_ws/build/mission_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/didac/exchange/Team3/ros2_ws/install/mission_manager/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/didac/exchange/Team3/ros2_ws/build/mission_manager/build --no-deps symlink_data
