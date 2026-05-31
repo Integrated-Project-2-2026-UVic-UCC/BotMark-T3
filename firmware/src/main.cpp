@@ -1,48 +1,49 @@
 #include <Arduino.h>
-#include "imu_manager.h"
 
-// Instancia global de tu gestor de IMU
-IMUManager imu;
+#include "motors_controller.h"
 
-// Variable para controlar el tiempo de impresión sin bloquear la CPU
-unsigned long lastPrint = 0;
+// Define los pines según tu hardware
+// MotorHW {IN1, IN2, PWM}
+MotorHW motorIzquierdo = {16, 17, 32}; 
+MotorHW motorDerecho   = {2, 15, 33};
+
+MotorsController robot(motorIzquierdo, motorDerecho);
 
 void setup() {
     Serial.begin(115200);
-    Serial.println("--- Iniciando Prueba de IMU ICM-20948 ---");
-
-    // NOTA: Ya no llamamos a Wire.begin() aquí porque tu método 
-    // imu.begin() ya se encarga de abrir el puerto I2C en los pines 21 y 22.
-    
-    // Iniciar y verificar la conexión
-    if (!imu.begin()) {
-        Serial.println("Error: No se pudo encontrar la ICM-20948. Revisa el cableado (0x68).");
-        while (1); // Detener ejecución si hay fallo físico
-    }
-
-    Serial.println("IMU iniciada. Mantén el robot quieto para fijar el cero inicial...");
-    delay(2000); // Pequeña pausa para estabilizar lecturas
-    
-    // Fijar el "Frente" del robot
-    imu.resetYaw();
-    Serial.println("Yaw reseteado a 0. ¡Ya puedes girar el sensor!");
+    robot.begin();
+    Serial.println("--- Test de Motores Iniciado ---");
 }
 
 void loop() {
-    // 1. Leer los datos crudos y calcular las matemáticas (atan2, normalización)
-    imu.update();
+    // // TEST 1: Avance progresivo (Rampa de velocidad)
+    // Serial.println("Test 1: Avance progresivo");
+    // for (int i = 0; i <= 255; i += 50) {
+    //     robot.move(i, i);
+    //     delay(500);
+    // }
+    
+    // // TEST 2: Frenado y Reversa
+    // Serial.println("Test 2: Reversa total");
+    // robot.move(-200, -200);
+    // delay(2000);    
+    robot.move(200, 200);
+    delay(2000);
 
-    // 2. Imprimir datos cada 100ms (10 veces por segundo)
-    if (millis() - lastPrint > 100) {
-        
-        // Obtener el valor ya procesado (-PI a PI)
-        float yaw = imu.getYawRad();
-        
-        Serial.print("Yaw (Rad): ");
-        Serial.print(yaw, 4);
-        Serial.print(" | Yaw (Deg): ");
-        Serial.println(yaw * (180.0f / PI));
+    // // TEST 3: Giro sobre el eje (Tanque)
+    // Serial.println("Test 3: Giro derecha");
+    // robot.move(150, -150);
+    // delay(1000);
 
-        lastPrint = millis();
-    }
+    // // TEST 4: Verificación del Escalado Inteligente
+    // // Enviamos valores superiores a 255. 
+    // // La librería debería escalar (400, 200) -> (255, 127) aprox.
+    // Serial.println("Test 4: Probando escalado inteligente (>255)");
+    // robot.move(500, 250); 
+    // delay(2000);
+
+    // // Parada total
+    // Serial.println("Parada...");
+    // robot.move(0, 0);
+    // delay(3000);
 }
