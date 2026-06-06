@@ -1,38 +1,38 @@
 #pragma once
 
-// --- PINES MOTORES (Basados en tus pruebas) ---
-// Motor Izquierdo
-#define PIN_MOTOR_IZQ_IN1 16
-#define PIN_MOTOR_IZQ_IN2 17
-#define PIN_MOTOR_IZQ_PWM 32
+// --- Pines ---
+namespace Pin {
+    constexpr int M_IZQ_IN1 = 16, M_IZQ_IN2 = 17, M_IZQ_PWM = 32;
+    constexpr int M_DER_IN1 = 2, M_DER_IN2 = 15, M_DER_PWM = 33;
+    constexpr int ENC_IZQ_A = 12, ENC_IZQ_B = 14; 
+    constexpr int ENC_DER_A = 26, ENC_DER_B = 27;
+    constexpr int IMU_SDA = 21, IMU_SCL = 22;
+}
 
-// Motor Derecho
-#define PIN_MOTOR_DER_IN1 2
-#define PIN_MOTOR_DER_IN2 15
-#define PIN_MOTOR_DER_PWM 33
+// --- Física y Control ---
+namespace Phys {
+    constexpr float WHEEL_DIAMETER = 0.08f;
+    constexpr float WHEEL_TRACK = 0.235f; // Distancia entre ruedas
+    constexpr int PPR = 11;
+    constexpr float GEAR_RATIO = 700.0f;
+}
+// --- Ajustes de PID ---
+namespace PID {
+    // Rueda Izquierda
+    constexpr float IZQ_KP = 0.5f, IZQ_KI = 0.1f, IZQ_KD = 0.05f;
+    constexpr float IZQ_MIN = -255.0f, IZQ_MAX = 255.0f;
 
-// --- PINES ENCODERS ---
-// Rueda Izquierda
-#define PIN_ENC_IZQ_A 12
-#define PIN_ENC_IZQ_B 14
+    // Rueda Derecha
+    constexpr float DER_KP = 0.5f, DER_KI = 0.1f, DER_KD = 0.05f;
+    constexpr float DER_MIN = -255.0f, DER_MAX = 255.0f;
+    
+    // Yaw (Giro)
+    constexpr float YAW_KP = 2.0f, YAW_KI = 0.0f, YAW_KD = 0.1f;
+    constexpr float YAW_MIN = -0.5f, YAW_MAX = 0.5f;
+}
 
-// Rueda Derecha
-#define PIN_ENC_DER_A 26
-#define PIN_ENC_DER_B 27
-
-// --- PARÁMETROS FÍSICOS DEL ROBOT ---
-// Diámetro de la rueda en metros (ej: 65mm = 0.065)
-#define ROBOT_WHEEL_DIAMETER 0.065
-
-// Pulsos por revolución del motor (antes de la reductora)
-#define ROBOT_ENCODER_PPR 11
-
-// Relación de la reductora (ej: 30:1)
-#define ROBOT_GEAR_RATIO 30.0
-
-// Ancho de vía efectivo (distancia entre ruedas en metros)
-// Como es Skid-Steer, empieza con la medida real y ajústala luego
-#define ROBOT_TRACK_WIDTH 0.30 
-
-// --- CONFIGURACIÓN DE CONTROL ---
-#define LOOP_PERIOD_MS 10  // Frecuencia de control (100Hz)
+// --- Tiempos ---
+namespace Timing {
+        constexpr int CONTROL_TIME_MS = 10;
+        constexpr int TELEMETRY_TIME_MS = 100;
+    }

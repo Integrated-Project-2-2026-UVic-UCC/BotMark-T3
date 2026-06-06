@@ -1,53 +1,60 @@
 #include <Arduino.h>
 
+#include "config.h"
+
 #include "motors_controller.h"
 #include "encoder_handler.h"
 
-// 1. Configuración de Hardware
-MotorHW hwIzq = {16, 17, 32}; // IN1, IN2, PWM
-MotorHW hwDer = {2, 15, 33};
+// Hardware pin mapping for motor control
+MotorHW hw_left = {Pin::M_IZQ_IN1, Pin::M_IZQ_IN2, Pin::M_IZQ_PWM};
+MotorHW hw_right = {Pin::M_DER_IN1, Pin::M_DER_IN2, Pin::M_DER_PWM};
 
-EncoderConfig encIzq = {12, 14}; // Pin A, Pin B
-EncoderConfig encDer = {26, 27};
+// Encoder pin configuration
+EncoderConfig enc_left = {Pin::ENC_IZQ_A, Pin::ENC_IZQ_B};
+EncoderConfig enc_right = {Pin::ENC_DER_A, Pin::ENC_DER_B};
 
-// 2. Parámetros Físicos (Ajusta estos valores a tu robot)
-// Diámetro: 0.065m (65mm), PPR: 11, Ratio: 30:1
-RobotPhysics phys = {0.065, 11, 30.0}; 
+// Robot mechanical specifications for odometry calculations
+RobotPhysics robot_physics = {Phys::WHEEL_DIAMETER, Phys::PPR, Phys::GEAR_RATIO}; 
 
-// 3. Instancias
-MotorsController robot(hwIzq, hwDer);
-EncoderHandler encoders(encDer, encIzq, phys); // Ojo: verifica orden Der/Izq según tu constructor
+// Motor and encoder control instances
+MotorsController motorsController(hw_left, hw_right);
+EncoderHandler encoderHandler(enc_right, enc_left, robot_physics);
 
 void setup() {
     Serial.begin(115200);
     
-    robot.begin();
-    encoders.begin();
+    // Initialize motor and encoder subsystems
+    motorsController.begin();
+    encoderHandler.begin();
 
-    Serial.println("--- Test de Distancia: Objetivo 0.5 metros ---");
-    delay(2000); // Tiempo para soltar el robot en el suelo
+    Serial.println("Distance Test: Target 0.5 meters");
+    delay(2000); 
 }
 
 void loop() {
-    // Actualizamos los cálculos de los encoders
-    encoders.update();
+    // Process current encoder data
+    encoderHandler.update();
 
-    float distanciaActual = encoders.getDistIzq(); // Usamos la rueda izquierda de referencia
-    float velocidadActual = encoders.getVelocityIzq();
+    // Retrieve movement metrics
+    float current_distance = encoderHandler.getDistIzq(); 
+    float current_velocity = encoderHandler.getVelocityIzq();
 
-    Serial.print("Dist: "); Serial.print(distanciaActual);
-    Serial.print(" m | Vel: "); Serial.print(velocidadActual);
+    // Output status to serial monitor
+    Serial.print("Dist: "); Serial.print(current_distance);
+    Serial.print(" m | Vel: "); Serial.print(current_velocity);
     Serial.println(" m/s");
 
-    if (distanciaActual < 0.50) {
-        // Si no ha llegado a medio metro, sigue moviéndose al 50% de potencia (aprox 128)
-        robot.move(128, 128);
+    // Movement logic to reach target distance
+    if (current_distance < 0.50) {
+        // Apply 50% duty cycle to move forward
+        motorsController.move(128, 128);
     } else {
-        // ¡Llegamos! Frenazo.
-        robot.move(0, 0);
-        Serial.println("--- Objetivo Alcanzado ---");
-        while(1); // Bloqueamos aquí para que no haga nada más
+        // Stop motors and enter infinite loop upon reaching target
+        motorsController.move(0, 0);
+        Serial.println("Target Reached");
+        while(1); 
     }
 
-    delay(10); // Pequeña pausa para no saturar el Serial
+    // Stabilize loop execution
+    delay(10); 
 }

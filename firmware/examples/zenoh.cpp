@@ -1,10 +1,13 @@
 #include <Arduino.h>
+
+#include "secrets.h"
+
 #include "zenoh_manager.h"
 
 // Configuración de red
-const char* ssid = "MiFibra-9651";
-const char* pass = "i6xKuQxm";
-const char* router_ip = "tcp/192.168.1.51:7447"; // La IP del ordenador en la red
+const char* ssid = Network::SSID;
+const char* pass = Network::PASSWORD;
+const char* router_ip = Network::ROUTER_IP; // La IP del ordenador en la red
 
 ZenohManager zm;
 
@@ -12,7 +15,7 @@ void setup() {
     Serial.begin(115200);
 
     // Inicializamos el manager
-    if (zm.begin(ssid, pass, router_ip)) {
+    if (zm.begin(router_ip, ssid, pass)) {
         Serial.println("¡Zenoh Manager iniciado correctamente!");
     } else {
         Serial.println("Error al iniciar Zenoh.");

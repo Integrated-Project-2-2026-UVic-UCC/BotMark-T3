@@ -1,11 +1,13 @@
 #include <Arduino.h>
 
+#include "config.h"
+
 #include "motors_controller.h"
 
 // Define los pines según tu hardware
 // MotorHW {IN1, IN2, PWM}
-MotorHW motorIzquierdo = {16, 17, 32}; 
-MotorHW motorDerecho   = {2, 15, 33};
+MotorHW motorIzquierdo = {Pin::M_IZQ_IN1, Pin::M_IZQ_IN2, Pin::M_IZQ_PWM};
+MotorHW motorDerecho   = {Pin::M_DER_IN1, Pin::M_DER_IN2, Pin::M_DER_PWM};
 
 MotorsController robot(motorIzquierdo, motorDerecho);
 

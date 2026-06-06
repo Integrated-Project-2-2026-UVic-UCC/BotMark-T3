@@ -1,4 +1,7 @@
 #include <Arduino.h>
+
+#include "config.h"
+
 #include "imu_manager.h"
 
 // Instancia global de tu gestor de IMU
@@ -15,7 +18,7 @@ void setup() {
     // imu.begin() ya se encarga de abrir el puerto I2C en los pines 21 y 22.
     
     // Iniciar y verificar la conexión
-    if (!imu.begin()) {
+    if (!imu.begin(Pin::IMU_SDA, Pin::IMU_SCL)) {
         Serial.println("Error: No se pudo encontrar la ICM-20948. Revisa el cableado (0x68).");
         while (1); // Detener ejecución si hay fallo físico
     }
