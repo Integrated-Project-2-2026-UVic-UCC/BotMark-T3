@@ -53,6 +53,8 @@ public:
     void update();
 
     // Getters para obtener los datos procesados
+    long getTicksIzq();
+    long getTicksDer();
     float getVelocityIzq();
     float getVelocityDer();
     float getDistIzq();

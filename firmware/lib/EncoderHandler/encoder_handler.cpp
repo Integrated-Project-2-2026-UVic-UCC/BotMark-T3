@@ -58,6 +58,8 @@ void EncoderHandler::update() {
     }
 }
 
+long EncoderHandler::getTicksIzq() { return _lastTicksIzq; }
+long EncoderHandler::getTicksDer() { return _lastTicksDer; }
 float EncoderHandler::getVelocityIzq() { return _velIzq; }
 float EncoderHandler::getVelocityDer() { return _velDer; }
 // float EncoderHandler::getDistIzq() { return _totaldistIzq; }
