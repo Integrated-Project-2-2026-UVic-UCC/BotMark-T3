@@ -5,10 +5,10 @@
 #include "zenoh-pico.h"
 
 #pragma pack(push, 1)
-struct CommandData {
+// Estructura actualizada sin emergency_stop
+struct Twist {
     float linear_x;
     float angular_z;
-    bool emergency_stop;
 };
 
 struct SensorData {
@@ -26,24 +26,43 @@ struct SensorData {
 class ZenohManager {
 private:
     z_owned_session_t session;
-    z_owned_subscriber_t sub; // Necesitamos guardar el suscriptor
-    z_owned_publisher_t pub;
-
     
-    const char* _expr_pub = "rt/robot/sensores"; 
-    const char* _expr_sub = "rt/robot/comandos"; 
+    // Suscriptores (ESP32 escucha)
+    z_owned_subscriber_t sub_cmd;      // Recibe Twist
+    z_owned_subscriber_t sub_obstacle; // Recibe obstáculo
+
+    // Publicadores (ESP32 habla)
+    z_owned_publisher_t pub_sensors;   // Envía Odometría e IMU
+    z_owned_publisher_t pub_paused;    // Envía estado Pausa
+    z_owned_publisher_t pub_stoped;    // Envía estado Stop
+    
+    // Rutas (Key Expressions)
+    const char* _expr_pub_sensors  = "rt/robot/sensores"; 
+    const char* _expr_sub_cmd      = "rt/robot/twsit"; 
+    const char* _expr_pub_paused   = "rt/robot/is_paused";
+    const char* _expr_pub_stoped   = "rt/robot/is_stoped";
+    const char* _expr_sub_obstacle = "rt/robot/obstacle_detected";
     
     bool _connected = false;
-    CommandData _last_command = {0.0f, 0.0f, false};
+    Twist _last_command = {0.0f, 0.0f};
+    bool _obstacle_detected = false;
 
 public:
     ZenohManager();
     
-    bool begin(const char* ssid, const char* password, const char* router_ip);
+    bool begin(const char* router_ip, String ssid = "", String password = "");
+    
+    // Métodos de publicación
     void publishSensors(const SensorData& data);
-    CommandData getLastCommand();
+    void publishPaused(bool paused);
+    void publishStopped(bool stopped);
+    
+    // Métodos de consulta
+    Twist getLastCommand();
+    bool isObstacleDetected();
     bool isConnected();
 
-    // El callback en v1.x usa z_loaned_sample_t
-    static void on_data(z_loaned_sample_t* sample, void* arg);
+    // Callbacks estáticos para Zenoh-Pico
+    static void on_twist(z_loaned_sample_t* sample, void* arg);
+    static void on_obstacle(z_loaned_sample_t* sample, void* arg);
 };
