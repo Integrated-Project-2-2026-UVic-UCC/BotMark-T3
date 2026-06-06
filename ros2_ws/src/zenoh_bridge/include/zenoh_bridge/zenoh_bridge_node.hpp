@@ -1,9 +1,12 @@
 #pragma once
 
 #include "rclcpp/rclcpp.hpp"
+
 #include "nav_msgs/msg/odometry.hpp"
 #include "sensor_msgs/msg/imu.hpp"
 #include "geometry_msgs/msg/twist.hpp" // Añadido para recibir Twist
+#include <std_msgs/msg/bool.hpp>
+
 #include <zenoh.h>
 #include <tf2/LinearMath/Quaternion.h>
 
@@ -39,14 +42,24 @@ private:
     void publish_real_odometry(int32_t current_ticks_left, int32_t current_ticks_right);
 
     // Recursos de ROS 2
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr is_paused_pub_;
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr is_stoped_pub_;
     rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_pub_;
     rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
+
+    rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr obstacle_sub_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_sub_; // Suscriptor de Twist
 
     // Recursos de Zenoh
     z_owned_session_t z_session_;
     z_owned_subscriber_t z_sub_;
     z_owned_publisher_t z_cmd_pub_; // Publicador hacia el ESP32
+    z_owned_subscriber_t z_sub_paused_;
+    z_owned_subscriber_t z_sub_stoped_;
+    z_owned_publisher_t z_pub_obstacle_;
+
+    static void zenoh_paused_callback(struct z_loaned_sample_t* sample, void* arg);
+    static void zenoh_stoped_callback(struct z_loaned_sample_t* sample, void* arg);
 
     // --- VARIABLES DE ODOMETRÍA ---
     // ¡OJO! Cambia estos valores por las medidas reales de tu robot

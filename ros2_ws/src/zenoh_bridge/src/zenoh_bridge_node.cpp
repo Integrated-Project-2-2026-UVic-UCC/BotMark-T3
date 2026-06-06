@@ -6,13 +6,18 @@ ZenohBridgeNode::ZenohBridgeNode() : Node("zenoh_bridge_node") {
     // Ahora publicamos en el topic oficial de odometría
     odom_pub_ = this->create_publisher<nav_msgs::msg::Odometry>("odom_raw", 10);
     imu_pub_ = this->create_publisher<sensor_msgs::msg::Imu>("imu_raw", 10);
+    is_paused_pub_ = this->create_publisher<std_msgs::msg::Bool>("is_paused", 10);
+    is_stoped_pub_ = this->create_publisher<std_msgs::msg::Bool>("is_stoped", 10);
 
     init_zenoh();
 }
 
-ZenohBridgeNode::~ZenohBridgeNode() {
+ZenohBridgeNode::~ZenohBridgeNode() { // Destructor
     z_undeclare_publisher(z_publisher_move(&z_cmd_pub_)); // Limpiamos el nuevo publicador
+    z_undeclare_publisher(z_publisher_move(&z_pub_obstacle_));
     z_undeclare_subscriber(z_subscriber_move(&z_sub_));
+    z_undeclare_subscriber(z_subscriber_move(&z_sub_paused_));
+    z_undeclare_subscriber(z_subscriber_move(&z_sub_stoped_));
     z_close((z_loaned_session_t*)z_session_loan(&z_session_), NULL);
     RCLCPP_INFO(this->get_logger(), "Sesión de Zenoh cerrada correctamente.");
 }
@@ -45,7 +50,7 @@ void ZenohBridgeNode::init_zenoh() {
 
     // --- NUEVO: PUBLICADOR ZENOH Y SUSCRIPTOR ROS 2 (PC -> ESP32) ---
     z_view_keyexpr_t ke_cmd;
-    z_view_keyexpr_from_str(&ke_cmd, "rt/robot/comandos");
+    z_view_keyexpr_from_str(&ke_cmd, "rt/robot/twist");
     z_declare_publisher(z_session_loan(&z_session_), &z_cmd_pub_, z_view_keyexpr_loan(&ke_cmd), NULL);
 
     cmd_vel_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
@@ -59,7 +64,50 @@ void ZenohBridgeNode::init_zenoh() {
 
             z_owned_bytes_t payload;
             z_bytes_copy_from_buf(&payload, (const uint8_t*)&cmd, sizeof(CommandData));
-            RCLCPP_WARN(this->get_logger(), "REcibed command via ROS 2.");
+            RCLCPP_WARN(this->get_logger(), "Recibed command via ROS 2.");
+            
+            if (z_publisher_put(z_publisher_loan(&z_cmd_pub_), z_bytes_move(&payload), NULL) != Z_OK) {
+                RCLCPP_WARN(this->get_logger(), "Error enviando comando por Zenoh.");
+            }
+        }
+    );
+
+    // --- NUEVOS SUSCRIPTORES ZENOH (ESP32 -> PC) ---
+
+    // 1. is_paused
+    z_owned_closure_sample_t cb_paused;
+    z_closure_sample(&cb_paused, ZenohBridgeNode::zenoh_paused_callback, NULL, (void*)this);
+    z_view_keyexpr_t ke_paused;
+    z_view_keyexpr_from_str(&ke_paused, "rt/robot/is_paused");
+    z_declare_subscriber(z_session_loan(&z_session_), &z_sub_paused_, z_view_keyexpr_loan(&ke_paused), z_closure_sample_move(&cb_paused), NULL);
+
+    // 2. is_stoped
+    z_owned_closure_sample_t cb_stoped;
+    z_closure_sample(&cb_stoped, ZenohBridgeNode::zenoh_stoped_callback, NULL, (void*)this);
+    z_view_keyexpr_t ke_stoped;
+    z_view_keyexpr_from_str(&ke_stoped, "rt/robot/is_stoped");
+    z_declare_subscriber(z_session_loan(&z_session_), &z_sub_stoped_, z_view_keyexpr_loan(&ke_stoped), z_closure_sample_move(&cb_stoped), NULL);
+
+
+    // --- NUEVO PUBLICADOR ZENOH Y SUSCRIPTOR ROS 2 (PC -> ESP32) ---
+
+    // Publicador Zenoh para obstacle_detected
+    z_view_keyexpr_t ke_obs;
+    z_view_keyexpr_from_str(&ke_obs, "rt/robot/obstacle_detected");
+    z_declare_publisher(z_session_loan(&z_session_), &z_pub_obstacle_, z_view_keyexpr_loan(&ke_obs), NULL);
+
+    // Suscriptor ROS 2 que escucha al topic y lo manda por Zenoh
+    cmd_vel_sub_ = this->create_subscription<geometry_msgs::msg::Twist>(
+        "cmd_vel", 
+        10, 
+        [this](const geometry_msgs::msg::Twist::SharedPtr msg) {
+            CommandData cmd;
+            cmd.linear_x = static_cast<float>(msg->linear.x);
+            cmd.angular_z = static_cast<float>(msg->angular.z);
+            // Se ha eliminado cmd.emergency_stop = false;
+
+            z_owned_bytes_t payload;
+            z_bytes_copy_from_buf(&payload, (const uint8_t*)&cmd, sizeof(CommandData));
             
             if (z_publisher_put(z_publisher_loan(&z_cmd_pub_), z_bytes_move(&payload), NULL) != Z_OK) {
                 RCLCPP_WARN(this->get_logger(), "Error enviando comando por Zenoh.");
@@ -158,6 +206,39 @@ void ZenohBridgeNode::zenoh_sensor_callback(struct z_loaned_sample_t* sample, vo
     }
 }
 
+void ZenohBridgeNode::zenoh_paused_callback(struct z_loaned_sample_t* sample, void* arg) {
+    ZenohBridgeNode* node = static_cast<ZenohBridgeNode*>(arg);
+    const struct z_loaned_bytes_t* payload = z_sample_payload(sample);
+    
+    if (z_bytes_len(payload) == sizeof(bool)) {
+        bool val;
+        z_owned_slice_t slice;
+        z_bytes_to_slice(payload, &slice);
+        std::memcpy(&val, z_slice_data(z_slice_loan(&slice)), sizeof(bool));
+        z_slice_drop(z_slice_move(&slice));
+
+        auto msg = std_msgs::msg::Bool();
+        msg.data = val;
+        node->is_paused_pub_->publish(msg);
+    }
+}
+
+void ZenohBridgeNode::zenoh_stoped_callback(struct z_loaned_sample_t* sample, void* arg) {
+    ZenohBridgeNode* node = static_cast<ZenohBridgeNode*>(arg);
+    const struct z_loaned_bytes_t* payload = z_sample_payload(sample);
+    
+    if (z_bytes_len(payload) == sizeof(bool)) {
+        bool val;
+        z_owned_slice_t slice;
+        z_bytes_to_slice(payload, &slice);
+        std::memcpy(&val, z_slice_data(z_slice_loan(&slice)), sizeof(bool));
+        z_slice_drop(z_slice_move(&slice));
+
+        auto msg = std_msgs::msg::Bool();
+        msg.data = val;
+        node->is_stoped_pub_->publish(msg);
+    }
+}
 int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
     auto node = std::make_shared<ZenohBridgeNode>();

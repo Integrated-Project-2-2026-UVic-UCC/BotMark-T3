@@ -4,6 +4,7 @@ from rclpy.node import Node
 from rclpy.action import ActionClient
 from nav2_msgs.action import NavigateToPose
 from ament_index_python.packages import get_package_share_directory
+from std_msgs.msg import Bool  # <-- NUEVO: Importación para el topic de stop
 
 
 def euler_to_quaternion(yaw_degrees):
@@ -23,16 +24,25 @@ class MissionManagerNode(Node):
         # 1. Crear el Action Client
         self._action_client = ActionClient(self, NavigateToPose, "navigate_to_pose")
 
+        # --- NUEVO: Variables y Suscriptor para Stop ---
+        self.is_stopped = True
+        self.waiting_for_resume = False
+        self.stop_sub = self.create_subscription(
+            Bool, 
+            "is_stoped", 
+            self.stop_callback, 
+            10
+        )
+        # -----------------------------------------------
+
         # 2. Cargar el YAML
         self.waypoints = []
         self.current_wp_index = 0
         self.load_mission()
 
-        # 3. Arrancar la misión tras 2 segundos de inicialización (dar tiempo a que el nodo se levante y el Action Client se conecte al servidor)
+        # 3. Arrancar la misión tras 2 segundos de inicialización
         self.get_logger().info("Esperando conexión con el Controlador...")
         self.timer = self.create_timer(2.0, self.start_mission)
-        # El timer se ejecutará una sola vez para iniciar la misión
-        # Se hace con timer en vez de time.sleep porque asi no bloqueamos el hilo principal y el nodo escucha quien se suscribe al topic de feedback del Action Client desde el inicio.
 
     def load_mission(self):
         try:
@@ -49,13 +59,37 @@ class MissionManagerNode(Node):
             self.get_logger().error(f"Fallo al leer YAML: {e}")
             sys.exit(1)
 
+    # --- NUEVO: Callback para gestionar el estado del Stop ---
+    def stop_callback(self, msg):
+        self.is_stopped = msg.data
+        
+        if self.is_stopped:
+            self.get_logger().error("🛑 ¡SEÑAL DE STOP RECIBIDA! Misión abortada. Reiniciando al punto 1.")
+            self.current_wp_index = 0
+            self.waiting_for_resume = True
+            # No enviamos nada al controlador para cancelar aquí porque el 
+            # controlador también está suscrito al stop y abortará la acción él mismo.
+        else:
+            if self.waiting_for_resume:
+                self.get_logger().info("✅ SEÑAL DE STOP LEVANTADA. Reanudando misión desde el principio.")
+                self.waiting_for_resume = False
+                self.send_next_waypoint()
+    # ---------------------------------------------------------
+
     def start_mission(self):
-        self.timer.cancel()  # Cancelamos el timer para que no se repita (single-shot)
+        self.timer.cancel()
         self._action_client.wait_for_server()
         self.send_next_waypoint()
 
     def send_next_waypoint(self):
         """Prepara y envía el siguiente punto al Controlador."""
+        
+        # --- NUEVO: Bloqueo si estamos en STOP ---
+        if self.is_stopped:
+            self.get_logger().warn("Misión bloqueada por STOP. Esperando reanudación...")
+            return
+        # -----------------------------------------
+
         if self.current_wp_index >= len(self.waypoints):
             self.get_logger().info("✅ ¡MISIÓN COMPLETADA CON ÉXITO!")
             rclpy.shutdown()
@@ -80,14 +114,10 @@ class MissionManagerNode(Node):
         goal_msg.pose.pose.orientation.z = qz
         goal_msg.pose.pose.orientation.w = qw
 
-        # Action es como servidor pero con la capacidad de enviar feedback continuo y recibir el resultado final
-        # Es como un servidor que en medio tiene un publish/subscribe
         send_goal_future = self._action_client.send_goal_async(
             goal_msg, feedback_callback=self.feedback_callback
-        )  # envia objectiu i asigna que fer al rebre feedback, el feedback no se ejecua hasta que el primer callback (goal_response_callback) diga que el objetivo fue aceptado por el controlador
-        send_goal_future.add_done_callback(
-            self.goal_response_callback
-        )  # Posa alarma fins que el send_goal_future sigui acceptat o rebutjat pel controlador, i llavors executa el callback goal_response_callback
+        )
+        send_goal_future.add_done_callback(self.goal_response_callback)
 
     def feedback_callback(self, feedback_msg):
         """Se ejecuta continuamente mientras el robot se mueve (Feedback)"""
@@ -95,16 +125,13 @@ class MissionManagerNode(Node):
         self.get_logger().info(
             f"Distancia al objetivo: {distancia:.2f} metros", throttle_duration_sec=2.0
         )
-        # throttle_duration_sec hace que el mensaje se imprima cada 2 segundos, evitando saturar la consola con demasiados mensajes de feedback
-        # ignora en silencio todos los prints que pasen por esta misma línea de código durante los próximos 2 segundos
 
     def goal_response_callback(self, future):
         """Verifica si el Controlador aceptó o rechazó la orden"""
         goal_handle = future.result()
         if not goal_handle.accepted:
-            self.get_logger().error(
-                "❌ El Controlador rechazó el punto. Abortando misión."
-            )
+            # Si el controlador está en STOP y enviamos un punto, lo rechazará (REJECT)
+            self.get_logger().error("❌ El Controlador rechazó el punto.")
             return
 
         self.get_logger().info("Punto aceptado por el Controlador. En movimiento...")
@@ -114,12 +141,21 @@ class MissionManagerNode(Node):
     def get_result_callback(self, future):
         """Se ejecuta cuando el Controlador dice 'Llegué' o 'Fallé'"""
         status = future.result().status
+        
         if status == 4:  # SUCCEEDED
             self.get_logger().info(
                 f"🏁 Punto {self.waypoints[self.current_wp_index]['id']} alcanzado."
             )
             self.current_wp_index += 1
             self.send_next_waypoint()  # Pasar al siguiente
+            
+        # --- NUEVO: Gestión del Aborto por STOP ---
+        elif status == 6:  # ABORTED
+            if self.is_stopped:
+                self.get_logger().warn("Misión actual abortada correctamente debido a señal de STOP.")
+            else:
+                self.get_logger().error("⚠️ El Controlador abortó la misión de forma inesperada.")
+        # ------------------------------------------
         else:
             self.get_logger().error(
                 f"⚠️ El robot falló al llegar al punto. Código de estado: {status}"
@@ -130,7 +166,7 @@ def main(args=None):
     rclpy.init(args=args)
     node = MissionManagerNode()
     try:
-        rclpy.spin(node)  # spin() mantiene los callbacks asíncronos vivos
+        rclpy.spin(node)
     except KeyboardInterrupt:
         node.get_logger().info("Misión cancelada por el usuario.")
     finally:

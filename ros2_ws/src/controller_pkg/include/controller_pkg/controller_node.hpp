@@ -24,6 +24,13 @@ public:
 
 private:
   // ROS 2 Interfaces
+  // Añadir en la sección de variables privadas:
+  bool is_paused_ = false;
+  bool is_stopped_ = true;
+
+  // Añadir en la sección de suscriptores:
+  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr pause_sub_;
+  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr stop_sub_;
   rclcpp_action::Server<NavigateToPose>::SharedPtr action_server_;
   rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr lidar_sub_;
