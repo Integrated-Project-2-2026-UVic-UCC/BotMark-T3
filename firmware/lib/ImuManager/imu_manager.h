@@ -15,14 +15,23 @@ class IMUManager {
         IMUManager();
 
         // Inicializa el bus I2C y verifica la conexión con el sensor
-        bool begin();
+        bool begin(int sda, int scl);
 
         // Lee el magnetómetro y actualiza el valor de Yaw
         void update();
+
+        // Getters para aceleración y giroscopio (forzados a 0)
+        float getAccelX();
+        float getAccelY();
+        float getAccelZ();
+        float getGyroX();
+        float getGyroY();
+        float getGyroZ();
 
         // Devuelve la orientación actual en radianes (-PI a PI)
         float getYawRad();
 
         // Pone la orientación actual a cero (define el "frente" del robot)
         void resetYaw();
+
 };

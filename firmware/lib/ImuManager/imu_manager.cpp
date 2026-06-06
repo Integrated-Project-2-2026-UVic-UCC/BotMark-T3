@@ -2,9 +2,9 @@
 
 IMUManager::IMUManager() {}
 
-bool IMUManager::begin() {    
+bool IMUManager::begin(int sda, int scl) {    
     // 1. Iniciar bus I2C con los pines de la ESP32 (SDA=21, SCL=22)
-    Wire.begin(21, 22);
+    Wire.begin(sda, scl);
 
     // 2. Iniciar la comunicación con el sensor en la dirección 0x68
     imu.begin(Wire, 0x68);
@@ -43,9 +43,14 @@ void IMUManager::update() {
     }
 }
 
-float IMUManager::getYawRad() { 
-    return _currentYaw; 
-}
+float IMUManager::getAccelX() { return 0.0f; }
+float IMUManager::getAccelY() { return 0.0f; }
+float IMUManager::getAccelZ() { return 0.0f; }
+float IMUManager::getGyroX()  { return 0.0f; }
+float IMUManager::getGyroY()  { return 0.0f; }
+float IMUManager::getGyroZ()  { return 0.0f; }
+
+float IMUManager::getYawRad() { return _currentYaw;}
 
 void IMUManager::resetYaw() {
     // Tomamos una lectura instantánea para fijarla como el nuevo "cero"
