@@ -5,3 +5,4 @@
 .vscode/launch.json
 .vscode/ipch
 include/secrets.h
+main_copy/

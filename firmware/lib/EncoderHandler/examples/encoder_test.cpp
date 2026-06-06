@@ -1,17 +1,20 @@
+// This program performs a motor testing routine to verify movement accuracy 
+// by traveling a target distance of 0.5 meters using encoder feedback.
+
 #include <Arduino.h>
+
+#include <motors_controller.h>
+#include <encoder_handler.h>
 
 #include "config.h"
 
-#include "motors_controller.h"
-#include "encoder_handler.h"
-
 // Hardware pin mapping for motor control
-MotorHW hw_left = {Pin::M_IZQ_IN1, Pin::M_IZQ_IN2, Pin::M_IZQ_PWM};
-MotorHW hw_right = {Pin::M_DER_IN1, Pin::M_DER_IN2, Pin::M_DER_PWM};
+MotorHW hw_left = {Pin::M_LEFT_IN1, Pin::M_LEFT_IN2, Pin::M_LEFT_PWM};
+MotorHW hw_right = {Pin::M_RIGHT_IN1, Pin::M_RIGHT_IN2, Pin::M_RIGHT_PWM};
 
 // Encoder pin configuration
-EncoderConfig enc_left = {Pin::ENC_IZQ_A, Pin::ENC_IZQ_B};
-EncoderConfig enc_right = {Pin::ENC_DER_A, Pin::ENC_DER_B};
+EncoderConfig enc_left = {Pin::ENC_LEFT_A, Pin::ENC_LEFT_B};
+EncoderConfig enc_right = {Pin::ENC_RIGHT_A, Pin::ENC_RIGHT_B};
 
 // Robot mechanical specifications for odometry calculations
 RobotPhysics robot_physics = {Phys::WHEEL_DIAMETER, Phys::PPR, Phys::GEAR_RATIO}; 
@@ -19,6 +22,8 @@ RobotPhysics robot_physics = {Phys::WHEEL_DIAMETER, Phys::PPR, Phys::GEAR_RATIO}
 // Motor and encoder control instances
 MotorsController motorsController(hw_left, hw_right);
 EncoderHandler encoderHandler(enc_right, enc_left, robot_physics);
+
+unsigned long last_control_time = 0;
 
 void setup() {
     Serial.begin(115200);
@@ -32,12 +37,14 @@ void setup() {
 }
 
 void loop() {
+    unsigned long current_time = millis();
+    float delta_time = (current_time - last_control_time) / 1000.0;
     // Process current encoder data
-    encoderHandler.update();
+    encoderHandler.update(delta_time);
 
     // Retrieve movement metrics
-    float current_distance = encoderHandler.getDistIzq(); 
-    float current_velocity = encoderHandler.getVelocityIzq();
+    float current_distance = encoderHandler.getDistRight(); 
+    float current_velocity = encoderHandler.getVelocityRight();
 
     // Output status to serial monitor
     Serial.print("Dist: "); Serial.print(current_distance);
@@ -54,7 +61,7 @@ void loop() {
         Serial.println("Target Reached");
         while(1); 
     }
-
+    last_control_time = current_time;
     // Stabilize loop execution
     delay(10); 
 }
