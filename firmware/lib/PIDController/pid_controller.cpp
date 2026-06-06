@@ -63,7 +63,7 @@ float PIDController::circularcompute(float targetRate, float valorActual, float 
     // Guardar memoria para la siguiente vuelta
     _ultimoError = error;
 
-    // Salida total mapeada y limitada al PWM permitido
+    // Salida total mapeada y limitada al PWM permitid
     float salida = P + I + D;
     return constrain(salida, _minOut, _maxOut);
 }

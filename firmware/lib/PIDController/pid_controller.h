@@ -18,6 +18,6 @@ public:
     float linealcompute(float setpoint, float valorActual, float deltaTime);
     float circularcompute(float setpoint, float valorActual, float deltaTime);
 
-    // Función para resetear la memoria del PID si el robot se detiene
+    // Función para resetear la memoria del PID si el robot se detien
     void reset(float currentAngle = 0.0);
 };
