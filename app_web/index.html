@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Robot Control Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Header: IP Address and Status -->
+        <header class="top-bar glass-panel">
+            <div class="ip-section">
+                <label for="ip-input">ESP32 IP Address</label>
+                <div class="input-group">
+                    <input type="text" id="ip-input" placeholder="e.g. 192.168.1.100" autocomplete="off" />
+                    <button id="connect-btn" class="btn-secondary">Set</button>
+                </div>
+            </div>
+            <div class="status-section">
+                <div class="status-indicator">
+                    <div id="status-dot" class="dot disconnected"></div>
+                    <span id="status-text">Disconnected</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content: Emergency Stop -->
+        <main class="main-content">
+            <button id="stop-btn" class="btn-stop">
+                <span class="btn-text">STOP</span>
+                <span class="btn-subtext">EMERGENCY</span>
+            </button>
+        </main>
+
+        <!-- Footer: Control Buttons -->
+        <footer class="bottom-bar glass-panel">
+            <button id="start-btn" class="btn-control btn-start">
+                START
+            </button>
+            <button id="pause-resume-btn" class="btn-control btn-pause">
+                PAUSE
+            </button>
+        </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
