@@ -23,7 +23,7 @@ The goal is to combine:
 The main objective is to design and build a prototipe of an autonomous robotic platform capable of marking the lines of a grass field with high precision and minimal human intervention. The prototipe is indoor and with sand instead of paint.
 
 ### Specific Goals
-To achieve this, we have fulfilled the following requirements:
+To achieve this, the following requirements have to be fulfill:
 | Feature | Description |
 |---------|-------------|
 | 🔍 Localization | Integration of reliable positioning systems (Odometry + Lidar) |
