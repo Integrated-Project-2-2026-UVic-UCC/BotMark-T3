@@ -20,7 +20,7 @@ The goal is to combine:
 
 
 ## 🏅Objectives:
-The main objective is to design and build an autonomous robotic platform capable of marking the lines of a grass field with high precision and minimal human intervention.
+The main objective is to design and build a prototipe of an autonomous robotic platform capable of marking the lines of a grass field with high precision and minimal human intervention. The prototipe is indoor and with sand instead of paint.
 
 ### Specific Goals
 To achieve this, we will fulfill the following requirements:
