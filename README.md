@@ -87,7 +87,7 @@ To achieve this, we will fulfill the following requirements:
       <li>ROS 2 workspace responsible for high-level processing, autonomous navigation, sensor data handling, and DDS communication.</li>
       <ul>
         <li><b>mission_manager/:</b> Python package handling navigation sequences. Includes a <code>config/</code> folder with the route YAML.</li>
-        <li><b>controller_pkg:</b> C++ package for managing the robot's control loop and odometry.</li>
+        <li><b>controller_pkg/:</b> C++ package for managing the robot's control loop and odometry.</li>
         <li><b>ldlidar_stl_ros2/:</b> Node driver for the Lidar sensor (<a href="https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2.git" target="_blank">provided by manufacturer</a>).</li>
         <li><b>obstacle_detector/:</b> C++ package for Lidar data processing and collision avoidance.</li>
         <li><b>zenoh_bridge/:</b> C++ package for DDS communication with the microcontroller.</li>
@@ -130,7 +130,7 @@ To achieve this, we will fulfill the following requirements:
 | <img src="assets/belt.png" width="60"> | Timing belt | 2 | 5.33 | 10.66 | <a href="https://www.amazon.es/dp/B0CQQXWH6B?th=1" target="_blank"> Amazon </a> |
 | <img src="assets/pulley.png" width="60"> | Belt pulley | 2 | 5.25 | 10.49 | <a href="https://www.amazon.es/QUARKZMAN-Dentada-Temporizaci%C3%B3n-Aluminio-Hexagonal/dp/B0DRBM9TG1" target="_blank"> Amazon </a> |
 | <img src="assets/roller.png" width="60"> | Hard rubber roller | 1 | 11.41 | 11.41 | <a href="https://www.amazon.es/dp/B0D7CWNKWM" target="_blank"> Amazon </a> |
-| | | **Total material cost** | | **251.62** | |
+| | | | **Total cost** | **251.62** | |
 
 ## <picture><img src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width = 30px></picture> Development Status
 **Current Phase:** 🚩Milestone 3🚩
