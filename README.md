@@ -1,9 +1,10 @@
 <h1 align="center">🌱🤖Automated Line-Painting Robot🤖🌱</h1>
 
-<p align="center"> A Mechatronics Engineering project focused on autonomous navigation and precise marking of grass fields using an autonomous robot.</p>
+<p align="center"> A mechatronics engineering project focused on the precise marking of grass fields using an autonomous robot </p>
 <div align="center">
    <img width=100% src=https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&reversal=true/>
 </div>
+
 <a href="https://youtu.be/6cvCalASXHU" target="_blank"><img align="center" alt="difermon09 | GitHub" width="100%" src="https://github.com/Integrated-Project-2-2026-UVic-UCC/BotMark-T3/blob/main/assets/Botmark_video_image.png"/> </a>
 
 ## 📌Introduction:
@@ -32,31 +33,84 @@ To achieve this, we will fulfill the following requirements:
 | 📱 Control | Mobile application for supervision |
 
 
-## 📁Repository structure:
+## 📁 Repository Structure
+
 <details>
-  <summary>📚 Docs</summary>
-  <p align="center">It contains all the technical documentation, assembly guides, and project references.</p>
+  <summary>🖼️ <b>assets</b></summary>
+  <ul>
+    <li>Contains all the <b>media</b> and <b>images</b> for the this README.</li>
+  </ul>
 </details>
+
 <details>
-  <summary>💡Electronics</summary>
-  <p align="center">It contains the designs of electronic circuits and boards.</p>
+  <summary>💡 <b>electronics</b></summary>
+  <ul>
+    <li>Contains all the electronic circuit designs, <b>PCB layouts</b>, <b>Schematics</b>, and <b>Gerber files</b> necessary for board manufacturing.</li>
+  </ul>
 </details>
+
 <details>
-  <summary>🔩Mechanics</summary>
-  <p align="center">It contains the mechanical plans and 3D models.</p>
+  <summary>🔩 <b>mechanics</b></summary>
+  <ul>
+    <li>Contains the mechanical plans, source <b>CAD files</b>, and ready-to-print <b>STL files</b> for the chassis, wheels, and sand funnel mechanisms.</li>
+  </ul>
 </details>
+
 <details>
-  <summary>📱Mobile APP</summary>
-  <p align="center">It contains all the application software for the supervision of the robot.</p>
+  <summary>📱 <b>web_app</b></summary>
+  <ul>
+    <li>Contains the application code for the <b>user interface</b> and remote supervision of the robot.</li>
+  </ul>
 </details>
+
 <details>
-  <summary>👾Robot firmware</summary>
-  <p align="center">It contains all the programming of the microcontrollers.</p>
+  <summary>🤖 <b>robot_coding</b></summary>
+  <ul>
+    <li>Central repository containing the complete codebase for the autonomous robot, from low-level microcontroller firmware to high-level ROS 2 navigation and networking.</li>
+  </ul>
+  
+  <blockquote>
+  <details>
+    <summary>👾 <b>firmware</b> <i>(ESP32)</i></summary>
+    <ul>
+      <li>ESP32 PlatformIO project containing the low-level C/C++ programming.</li>
+      <ul>
+      <li><b>lib/:</b> Custom libraries for hardware control (Encoders, IMU, Kinematics, Motors, PID, Zenoh).</li>
+      <li><b>src/:</b> Main execution loop (<code>main.cpp</code>).</li>
+      </ul>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🧠 <b>ros2_ws</b> <i>(High-Level Logic & ROS 2)</i></summary>
+    <ul>
+      <li>ROS 2 workspace responsible for high-level processing, autonomous navigation, sensor data handling, and DDS communication.</li>
+      <ul>
+        <li><b>mission_manager/:</b> Python package handling navigation sequences. Includes a <code>config/</code> folder with the route YAML.</li>
+        <li><b>controller_pkg:</b> C++ package for managing the robot's control loop and odometry.</li>
+        <li><b>ldlidar_stl_ros2/:</b> Node driver for the Lidar sensor (<a href="https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2.git" target="_blank">provided by manufacturer</a>).</li>
+        <li><b>obstacle_detector/:</b> C++ package for Lidar data processing and collision avoidance.</li>
+        <li><b>zenoh_bridge/:</b> C++ package for DDS communication with the microcontroller.</li>
+        <li><b>robot_bringup/:</b> Python package containing the launch file (<code>launch/robot_core.launch.py</code>) to start the entire system.</li>
+      </ul>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🔌 <b>udev & zenoh_router</b></summary>
+    <ul>
+      <li><b>udev/:</b> Linux rules (<code>99-robot.rules</code>) for stable USB sensor and motor connections.</li>
+      <li><b>zenoh_router_v1.8.0/:</b> Router setup and configuration for Zenoh communications.</li>
+    </ul>
+  </details>
+  </blockquote>
 </details>
+
 <details>
-  <summary>🤖Robot software</summary>
-  <p align="center">It contains all the processing and logic programming that the microprocessor performs.</p>
-</details> 
+  <summary>⚙️ <b>Environment Setup</b></summary>
+  <ul>
+    <li><b>setup_env.sh:</b> Bash script to quickly configure the development environment and dependencies.
+</details>
 
 
 ## <picture><img src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width = 30px></picture> Development Status
