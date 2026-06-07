@@ -22,7 +22,7 @@ The goal is to combine:
 ## 🏅Objectives:
 The main objective is to design and build an autonomous robotic platform capable of marking the lines of a grass field with high precision and minimal human intervention.
 
-### Specific goals
+### Specific Goals
 To achieve this, we will fulfill the following requirements:
 | Feature | Description |
 |---------|-------------|
@@ -132,13 +132,72 @@ To achieve this, we will fulfill the following requirements:
 | <img src="assets/roller.png" width="60"> | Hard rubber roller | 1 | 11.41 | 11.41 | <a href="https://www.amazon.es/dp/B0D7CWNKWM" target="_blank"> Amazon </a> |
 | | | | **Total cost** | **251.62** | |
 
-## <picture><img src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width = 30px></picture> Development Status
-**Current Phase:** 🚩Milestone 3🚩
-- Design sand funnel
-- Solder components on the test PCB
-- Programm Lidar triangulation
-- Milestone 3 - Mid term presentation
+## 🧾 Software Dependencies
 
+## 🏗️ Hardware Assembly (DIY Guide)
+
+## 💻 Software & Firmware Setup
+<p>This repository is structured to make the initial setup fast and automated. The codebase is divided into three main environments: the high-level robot layer (ROS 2), the microcontroller firmware (ESP32), and the web app interface.</p>
+
+### ROS 2 Environment and UDEV Rules (Linux)
+<p>At the root of the project, you will find an automation script (<code>setup_env.sh</code>). This script automatically downloads the missing ROS 2 dependencies using <code>rosdep</code> and installs the system's UDEV rules (strictly necessary to assign the fixed ports <code>/dev/lidar</code> and <code>/dev/esp32</code>).</p>
+
+<p>Open a terminal at the root of the project and run:</p>
+
+<pre><code>chmod +x setup_env.sh
+./setup_env.sh</code></pre>
+
+<p>Once the script finishes successfully, build the ROS 2 workspace to generate the binaries and source the installation:</p>
+
+<pre><code>cd robot_coding/ros2_ws
+colcon build</code>
+source install/setup.bash</code></pre>
+
+### Microcontroller Firmware (ESP32)
+<p>The low-level code is fully managed with PlatformIO, so there is no need to manually search for or install C++ libraries.</p>
+
+<ol>
+  <li>Open the <code>robot_coding/firmware</code> folder using Visual Studio Code (requires having the official PlatformIO extension installed).</li>
+  <li>Upon opening the project, PlatformIO will read the configuration and automatically download all necessary dependencies in the background (PID management, Zenoh bridge, motor libraries, etc.).</li>
+  <li>Connect the ESP32 board to your PC via USB and use the <b>Upload</b> button on the bottom bar of PlatformIO to build and flash the code onto the microcontroller.</li>
+</ol>
+
+### App Web Interface
+
+## 🚀 How to Run (Usage)
+<p>Once the initial setup and firmware flashing are complete, you can start the entire robot ecosystem by following these steps.</p>
+
+### Start the Robot Core (ROS 2)
+<p>Ensure your ESP32 and LiDAR are connected via USB. Open a terminal, source your workspace, and execute the main launch file. This single command orchestrates all the nodes and the zenoh router:</p>
+
+<pre><code>cd robot_coding/ros2_ws
+source install/setup.bash
+ros2 launch robot_bringup robot_core.launch.py</code></pre>
+
+<p>You should see the terminal output confirming that the LiDAR communication is normal and the Zenoh router is successfully connected to the microcontroller.</p>
+
+### Shutdown
+<p>To safely stop the robot, simply press <code>Ctrl + C</code> in the terminal running the ROS 2 launch file. The system will automatically shut down all nodes, stop the motors, and close the Zenoh connections.</p>
+
+## <picture><img src = "https://github.com/7oSkaaa/7oSkaaa/blob/main/Images/about_me.gif?raw=true" width = 30px></picture> Development Status
+### 🚩Current Phase: Finished🚩
+<p>The vast majority of the objectives proposed at the beginning of the project have been successfully achieved, delivering a structured and functional robotic ecosystem. However, to maintain transparent documentation, the following points should be considered for future iterations:</p>
+
+### 🛠️ Hardware Limitations (Known Issues)
+<ul>
+  <li><b>Rear wheel fastening:</b> There is a mechanical design flaw that causes one of the rear wheels to unscrew during continuous turns. It is highly recommended that the client or the mechanical team redesign the fastening system (e.g., by adding nylon locknuts or using reverse threading) for the next prototype.</li>
+</ul>
+
+### 🚀 Future Work & Improvements (Roadmap)
+<p>Due to time constraints, the drift correction system—which was intended to fuse raw odometry, IMU data, and LiDAR triangulation with beacons using an <b>Extended Kalman Filter (EKF)</b>—was not implemented.</p>
+
+<p><b>Why is this not a blocker?</b><br>
+This omission does not affect the client's final scope. The current triangulation system was designed exclusively for the <b>indoor</b> prototype. The final product version will require a complete architectural shift regardless, in order to integrate <b>outdoor</b> positioning systems (such as GPS/RTK).</p>
+
+<blockquote>
+  <p><b>⚠️ Technical Note for Future Developers:</b><br>
+  Once the project is resumed and the Kalman Filter (EKF) is implemented to correct the drift, it is vital to update the subscriptions within the <code>controller_node</code>. Currently, the control logic relies on raw odometry. This must be updated so the node subscribes to the newly filtered odometry topic (typically <code>/odometry/filtered</code>).</p>
+</blockquote>
 
 ## <img src='https://raw.githubusercontent.com/ShahriarShafin/ShahriarShafin/main/Assets/handshake.gif' width="30px"> Team
 
