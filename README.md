@@ -5,11 +5,14 @@
    <img width=100% src=https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&reversal=true/>
 </div>
 
+<video src="https://github.com/Integrated-Project-2-2026-UVic-UCC/BotMark-T3/raw/main/commercial_promotional_video.mp4" width="100%" controls>
+</video>
+
 ## 📌Introduction:
 Field marking in football pitches is a time-consuming and precision-critical task. Traditional methods require manual measurement, steady handling, and several hours of labor.
 
 Our bussiness, BOTMARK, proposes the design and development of a reduced-scale autonomous robot capable of navigating a football field and painting regulation-compliant lines using integrated positioning, sensing, and control systems.<br>
-<img align="right" width="226" height="208" alt="image" src="https://github.com/user-attachments/assets/b5e36d97-bb9c-4655-bead-495ff6bfb911"/>
+<img align="right" width="216" height="188" alt="image" src="https://github.com/user-attachments/assets/b5e36d97-bb9c-4655-bead-495ff6bfb911"/>
 
 The goal is to combine:
 - Mechanical robustness  
