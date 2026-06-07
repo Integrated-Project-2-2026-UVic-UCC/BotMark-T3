@@ -133,6 +133,17 @@ To achieve this, we will fulfill the following requirements:
 | | | | **Total cost** | **251.62** | |
 
 ## 🧾 Software Dependencies
+<ul>
+  <li><b>Operating System:</b> Ubuntu 22.04 LTS (Jammy Jellyfish).</li>
+  <li><b>Robotics Framework:</b> ROS 2 Humble.</li>
+  <li><b>Firmware IDE:</b> Visual Studio Code with the <b>PlatformIO</b> extension.</li>
+  <li><b>Languages:</b> C++ and Python 3.10</li>
+  <li><b>Networking:</b> Eclipse Zenoh (Router v1.8.0 is included directly in the repository).</li>
+</ul>
+
+<blockquote>
+  <p><b>💡 Note:</b> You do not need to install the ROS 2 or Python packages manually. Running the <code>setup_env.sh</code> script will automatically parse the <code>package.xml</code> files and fetch all required dependencies via <code>rosdep</code>.</p>
+</blockquote>
 
 ## 🏗️ Hardware Assembly (DIY Guide)
 
