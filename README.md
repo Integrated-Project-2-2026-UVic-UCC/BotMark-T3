@@ -3,6 +3,7 @@
 <p align="center"> A Mechatronics Engineering project focused on autonomous navigation and precise marking of grass fields using an autonomous robot.</p>
 <div align="center">
    <img width=100% src=https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&reversal=true/>
+   https://youtu.be/6cvCalASXHU
 </div>
 
 <video src="https://github.com/Integrated-Project-2-2026-UVic-UCC/BotMark-T3/raw/main/commercial_promotional_video.mp4" width="100%" controls>
@@ -74,7 +75,5 @@ To achieve this, we will fulfill the following requirements:
 - Project Manager – Oriol Arbonies  
 - Mechanical Lead – Àlex López  
 - Electronics Lead – Joan Marc Tur  
-- Software Lead – Dídac Fernández -> <a href="https://github.com/difermon09" target="_blank">
-        <img align="center" alt="difermon09 | GitHub" width="26px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/1024px-Github-desktop-logo-symbol.svg.png" />
-    </a> &nbsp;&nbsp; 
+- Software Lead – Dídac Fernández -> <a href="https://github.com/difermon09" target="_blank"><img align="center" alt="difermon09 | GitHub" width="26px" src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/> </a> &nbsp;&nbsp; 
 
