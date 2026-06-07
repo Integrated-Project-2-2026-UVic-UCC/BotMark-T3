@@ -26,11 +26,12 @@ The main objective is to design and build a prototipe of an autonomous robotic p
 To achieve this, the following requirements have to be fulfill:
 | Feature | Description |
 |---------|-------------|
-| 🔍 Localization | Integration of reliable positioning systems (Odometry + Lidar) |
-| 🛞 Mobility | Chassis suitable for outdoor use |
+| 🔍 Localization | Integration of reliable positioning systems (Odometry + IMU + Lidar) |
+| 🛞 Mobility & Storage | Chassis suitable for indoor use and storage to do a line of 2m |
+| ⚡Electronics | To power and connect all the components|
 | 🎯 Precision | Precise paint application mechanism |
-| 🤖 Autonomy | Automated painting sequences |
-| 📱 Control | Mobile application for supervision |
+| 🤖 Autonomy | Automated painting sequences up to 40 min |
+| 📱 Manage | Mobile application for supervision |
 
 
 ## 📁 Repository Structure
