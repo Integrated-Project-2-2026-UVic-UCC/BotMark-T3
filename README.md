@@ -146,7 +146,7 @@ To achieve this, we will fulfill the following requirements:
 </blockquote>
 
 ## 🏗️ Hardware Assembly (DIY Guide)
-
+For the wiring, follow the electrical scheme of the electronics
 ## 💻 Software & Firmware Setup
 <p>This repository is structured to make the initial setup fast and automated. The codebase is divided into three main environments: the high-level robot layer (ROS 2), the microcontroller firmware (ESP32), and the web app interface.</p>
 
