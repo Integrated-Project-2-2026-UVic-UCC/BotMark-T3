@@ -3,11 +3,8 @@
 <p align="center"> A Mechatronics Engineering project focused on autonomous navigation and precise marking of grass fields using an autonomous robot.</p>
 <div align="center">
    <img width=100% src=https://capsule-render.vercel.app/api?type=waving&height=100&color=gradient&reversal=true/>
-   https://youtu.be/6cvCalASXHU
 </div>
-
-<video src="https://github.com/Integrated-Project-2-2026-UVic-UCC/BotMark-T3/raw/main/commercial_promotional_video.mp4" width="100%" controls>
-</video>
+<a href="https://youtu.be/6cvCalASXHU" target="_blank"><img align="center" alt="difermon09 | GitHub" width="100%" src="https://github.com/Integrated-Project-2-2026-UVic-UCC/BotMark-T3/blob/main/assets/Botmark_video_image.png"/> </a>
 
 ## 📌Introduction:
 Field marking in football pitches is a time-consuming and precision-critical task. Traditional methods require manual measurement, steady handling, and several hours of labor.
@@ -75,5 +72,5 @@ To achieve this, we will fulfill the following requirements:
 - Project Manager – Oriol Arbonies  
 - Mechanical Lead – Àlex López  
 - Electronics Lead – Joan Marc Tur  
-- Software Lead – Dídac Fernández -> <a href="https://github.com/difermon09" target="_blank"><img align="center" alt="difermon09 | GitHub" width="26px" src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/> </a> &nbsp;&nbsp; 
+- Software Lead – Dídac Fernández -> <a href="https://github.com/difermon09" target="_blank"><img align="center" alt="difermon09 | GitHub" width="26px" src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/> </a> 
 
