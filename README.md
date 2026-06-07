@@ -142,7 +142,7 @@ To achieve this, we will fulfill the following requirements:
 </ul>
 
 <blockquote>
-  <p><b>💡 Note:</b> You do not need to install the ROS 2 or Python packages manually. Running the <code>setup_env.sh</code> script will automatically parse the <code>package.xml</code> files and fetch all required dependencies via <code>rosdep</code>.</p>
+  <p><b>💡 Note:</b> All the other dependencies will be installed automatically at the Software & Firmware Setup paragraph</p>
 </blockquote>
 
 ## 🏗️ Hardware Assembly (DIY Guide)
