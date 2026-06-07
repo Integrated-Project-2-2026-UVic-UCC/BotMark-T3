@@ -1,0 +1,8 @@
+prefix=/home/user/install/zenoh_pico
+
+Name: zenohpico
+Description: 
+URL: 
+Version: 1.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lzenohpico
