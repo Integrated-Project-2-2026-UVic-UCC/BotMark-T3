@@ -179,7 +179,7 @@ void ZenohBridgeNode::zenohSensorCallback(struct z_loaned_sample_t* sample, void
         node->_imu_pub->publish(imu_msg);
 
         node->publishRealOdometry(data.ticks_left, data.ticks_right);
-        RCLCPP_INFO(node->get_logger(), "Received: TicksL=%d TicksR=%d", data.ticks_left, data.ticks_right);
+        RCLCPP_INFO_THROTTLE(node->get_logger(), *node->get_clock(), 1000, "Received: TicksL=%d TicksR=%d", data.ticks_left, data.ticks_right);
         
     } else {
         RCLCPP_ERROR(node->get_logger(), "Corrupted data size received.");

@@ -7,7 +7,7 @@ ZenohManager::ZenohManager() {}
 bool ZenohManager::begin(const char* router_ip, String ssid, String password) {
     WiFi.mode(WIFI_STA);
     if (WiFi.status() != WL_CONNECTED) {
-        Serial.println("Connecting to WiFi");
+        Serial.print("Connecting to WiFi");
         WiFi.begin(ssid, password);
         while (WiFi.status() != WL_CONNECTED) { 
             delay(500); 
@@ -113,9 +113,6 @@ void ZenohManager::onTwist(z_loaned_sample_t* sample, void* arg) {
 
         if (copied_bytes == len) {
             memcpy(&self->_last_command, buffer, sizeof(Twist));
-            Serial.printf("Command OK! Lin: %.2f | Ang: %.2f\n", 
-                          self->_last_command.linear_x, 
-                          self->_last_command.angular_z);
         } else {
             Serial.printf("Zenoh CMD Error: Only copied %d of %d bytes\n", (int)copied_bytes, (int)len);
         }
@@ -136,7 +133,6 @@ void ZenohManager::onObstacle(z_loaned_sample_t* sample, void* arg) {
         size_t copied_bytes = _z_bytes_to_buf(payload, (uint8_t*)&val, len);
         if (copied_bytes == len) {
             self->_obstacle_detected = val;
-            Serial.printf("Obstacle Updated! State: %d\n", val);
         }
     } else {
         Serial.printf("Zenoh OBS Error: Incorrect size. Received %u\n", (unsigned int)len);
