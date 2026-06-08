@@ -171,6 +171,7 @@ source install/setup.bash</code></pre>
 <ol>
   <li>Open the <code>robot_coding/firmware</code> folder using Visual Studio Code (requires having the official PlatformIO extension installed).</li>
   <li>Upon opening the project, PlatformIO will read the configuration and automatically download all necessary dependencies in the background (PID management, Zenoh bridge, motor libraries, etc.).</li>
+   <li>Change the Wifi credentials to yours</li>
   <li>Connect the ESP32 board to your PC via USB and use the <b>Upload</b> button on the bottom bar of PlatformIO to build and flash the code onto the microcontroller.</li>
 </ol>
 
