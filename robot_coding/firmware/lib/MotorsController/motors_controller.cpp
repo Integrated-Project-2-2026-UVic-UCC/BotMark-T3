@@ -27,19 +27,30 @@ void MotorsController::begin() {
     ledcAttachPin(_PWMB, 1);
 }
 
-void MotorsController::move(int velA, int velB) {
-    applySpeedLimits(velA, velB);
+void MotorsController::move(float velA, float velB) {
+    int pwmA = (int)((velA / _MAX_SPEED_MPS) * _MAX_PWM);
+    int pwmB = (int)((velB / _MAX_SPEED_MPS) * _MAX_PWM);
+    applySpeedLimits(pwmA, pwmB);
 
-    setMotor(_AIN1, _AIN2, 0, -velA); 
-    setMotor(_BIN1, _BIN2, 1, velB); 
+    setMotor(_AIN1, _AIN2, 0, -pwmA); 
+    setMotor(_BIN1, _BIN2, 1, pwmB); 
 }
 
-void MotorsController::applySpeedLimits(int &velA, int &velB) {
-    int max_speed = max(abs(velA), abs(velB));
-    if (max_speed > 255) {
-        float scaling_factor = 255.0 / max_speed;
-        velA = (int)(velA * scaling_factor);
-        velB = (int)(velB * scaling_factor);
+void MotorsController::applySpeedLimits(int &pwmA, int &pwmB) {
+    int max_speed = max(abs(pwmA), abs(pwmB));
+    if (max_speed > _MAX_PWM) {
+        float scaling_factor = (float)_MAX_PWM / max_speed;
+        pwmA = (int)(pwmA * scaling_factor);
+        pwmB = (int)(pwmB * scaling_factor);
+    }
+    if (pwmA != 0) {
+        int signA = (pwmA > 0) ? 1 : -1; // If >0 -> 1 else -1
+        pwmA = map(abs(pwmA), 1, _MAX_PWM, _MIN_PWM, _MAX_PWM) * signA;
+    }
+
+    if (pwmB != 0) {
+        int signB = (pwmB > 0) ? 1 : -1;
+        pwmB = map(abs(pwmB), 1, _MAX_PWM, _MIN_PWM, _MAX_PWM) * signB;
     }
 }
 
