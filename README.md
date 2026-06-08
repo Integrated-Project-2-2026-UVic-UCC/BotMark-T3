@@ -20,17 +20,18 @@ The goal is to combine:
 
 
 ## 🏅Objectives:
-The main objective is to design and build an autonomous robotic platform capable of marking the lines of a grass field with high precision and minimal human intervention.
+The main objective is to design and build a prototipe of an autonomous robotic platform capable of marking the lines of a grass field with high precision and minimal human intervention. The prototipe is indoor and with sand instead of paint.
 
 ### Specific Goals
-To achieve this, we will fulfill the following requirements:
+To achieve this, the following requirements have to be fulfill:
 | Feature | Description |
 |---------|-------------|
-| 🔍 Localization | Integration of reliable positioning systems (Odometry + Lidar) |
-| 🛞 Mobility | Chassis suitable for outdoor use |
+| 🔍 Localization | Integration of reliable positioning systems (Odometry + IMU + Lidar) |
+| 🛞 Mobility & Storage | Chassis suitable for indoor use and storage to do a line of 2m |
+| ⚡Electronics | To power and connect all the components|
 | 🎯 Precision | Precise paint application mechanism |
-| 🤖 Autonomy | Automated painting sequences |
-| 📱 Control | Mobile application for supervision |
+| 🤖 Autonomy | Automated painting sequences up to 40 min |
+| 📱 Manage | Mobile application for supervision |
 
 
 ## 📁 Repository Structure
@@ -146,7 +147,7 @@ To achieve this, we will fulfill the following requirements:
 </blockquote>
 
 ## 🏗️ Hardware Assembly (DIY Guide)
-
+For the wiring, follow the electrical scheme of the electronics
 ## 💻 Software & Firmware Setup
 <p>This repository is structured to make the initial setup fast and automated. The codebase is divided into three main environments: the high-level robot layer (ROS 2), the microcontroller firmware (ESP32), and the web app interface.</p>
 
@@ -170,6 +171,7 @@ source install/setup.bash</code></pre>
 <ol>
   <li>Open the <code>robot_coding/firmware</code> folder using Visual Studio Code (requires having the official PlatformIO extension installed).</li>
   <li>Upon opening the project, PlatformIO will read the configuration and automatically download all necessary dependencies in the background (PID management, Zenoh bridge, motor libraries, etc.).</li>
+   <li>Change the Wifi credentials to yours</li>
   <li>Connect the ESP32 board to your PC via USB and use the <b>Upload</b> button on the bottom bar of PlatformIO to build and flash the code onto the microcontroller.</li>
 </ol>
 
