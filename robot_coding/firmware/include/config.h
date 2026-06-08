@@ -11,6 +11,7 @@ namespace Pin {
     constexpr int ENC_LEFT_A = 12, ENC_LEFT_B = 14; 
     constexpr int ENC_RIGHT_A = 26, ENC_RIGHT_B = 27;
     constexpr int IMU_SDA = 21, IMU_SCL = 22;
+    constexpr int SERVO = 25;
 }
 
 // Mechanical properties and physical measurements
@@ -40,4 +41,9 @@ namespace PID {
 namespace Timing {
     constexpr int CONTROL_TIME_MS = 10;
     constexpr int TELEMETRY_TIME_MS = 100;
+}
+
+namespace ServoAngles {
+    constexpr float CLOSE_ANGLE = 0.0f;
+    constexpr float OPEN_ANGLE = 180.0f;
 }
