@@ -28,7 +28,7 @@ public:
 private:
     // Operational state flags
     bool _is_paused = false;
-    bool _is_stopped = true;
+    bool _is_stopped = false;
 
     // ROS 2 subscriptions, publishers, and action server
     rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr _pause_sub;

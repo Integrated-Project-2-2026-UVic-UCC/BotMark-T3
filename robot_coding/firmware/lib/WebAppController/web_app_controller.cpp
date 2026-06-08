@@ -26,7 +26,7 @@ void WebAppController::handleOptions() {
 void WebAppController::begin(String ssid, String password) {
     // Establish Wi-Fi connection if not already connected
     if (WiFi.status() != WL_CONNECTED) {
-        Serial.println("Connecting to WiFi");
+        Serial.print("Connecting to WiFi");
         WiFi.begin(ssid, password);
         
         while (WiFi.status() != WL_CONNECTED) { 

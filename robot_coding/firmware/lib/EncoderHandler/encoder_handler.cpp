@@ -62,8 +62,8 @@ void EncoderHandler::update(float delta_time) {
 }
 
 // Data retrieval methods for raw tick counts
-long EncoderHandler::getTicksLeft() { return _last_ticks_left; }
-long EncoderHandler::getTicksRight() { return _last_ticks_right; }
+long EncoderHandler::getTicksLeft() { return -_last_ticks_left; }
+long EncoderHandler::getTicksRight() { return -_last_ticks_right; }
 
 // Data retrieval methods for instantaneous linear velocity (m/s)
 float EncoderHandler::getVelocityLeft() { return _vel_left; }

@@ -7,7 +7,7 @@ ControllerNode::ControllerNode() : Node("controller_node")
 {
     // Initialize odometry subscriber from Zenoh bridge
     _odom_sub = this->create_subscription<nav_msgs::msg::Odometry>(
-        "odom", 10, [this](const nav_msgs::msg::Odometry::SharedPtr msg) {
+        "odom_raw", 10, [this](const nav_msgs::msg::Odometry::SharedPtr msg) {
             std::lock_guard<std::mutex> lock(_data_mutex);
             _current_x = msg->pose.pose.position.x;
             _current_y = msg->pose.pose.position.y;

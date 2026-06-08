@@ -30,7 +30,7 @@ class MissionManagerNode(Node):
         self._action_client = ActionClient(self, NavigateToPose, "navigate_to_pose")
 
         # State tracking variables for emergency stops
-        self.is_stopped = True
+        self.is_stopped = False
         self.waiting_for_resume = False
         
         # Subscribe to the 'is_stoped' topic to monitor emergency stop commands
