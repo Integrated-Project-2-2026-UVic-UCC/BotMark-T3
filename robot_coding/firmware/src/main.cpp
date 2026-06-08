@@ -11,6 +11,7 @@
 #include <pid_controller.h>
 #include <web_app_controller.h>
 #include <zenoh_manager.h>
+#include <ESP32Servo.h>
 
 #include "config.h"
 #include "secrets.h"
@@ -25,6 +26,7 @@ EncoderConfig enc_right = {Pin::ENC_RIGHT_A, Pin::ENC_RIGHT_B};
 RobotPhysics robot_physics = {Phys::WHEEL_DIAMETER, Phys::PPR, Phys::GEAR_RATIO}; 
 
 // Subsystem instances
+Servo servo;
 MotorsController motorsController(hw_left, hw_right);
 EncoderHandler encoderHandler(enc_right, enc_left, robot_physics); 
 IMUManager imuManager;
@@ -38,7 +40,7 @@ ZenohManager zenohManager;
 // State and timing variables
 unsigned long last_control_time = 0;
 unsigned long last_zenoh_time = 0;
-bool is_stopped = true; 
+bool is_stopped = false; 
 bool is_paused = false;
 
 // Web application callback functions
@@ -53,6 +55,7 @@ void HandleStart() {
     zenohManager.publishStopped(false);
     
     // Reset PID controllers on startup to prevent sudden jumps
+    servo.write(ServoAngles::CLOSE_ANGLE);
     pidLeft.reset();
     pidRight.reset();
     Serial.println("State: START");
@@ -74,11 +77,16 @@ void setup() {
     Serial.begin(115200);
     
     // Initialize physical hardware subsystems
+    ESP32PWM::allocateTimer(3);
+    servo.setPeriodHertz(50);
+    servo.attach(Pin::SERVO);
+    servo.write(ServoAngles::CLOSE_ANGLE);
+
     motorsController.begin();
     encoderHandler.begin();
-
+    
     // Initialize IMU with connection retries
-    Serial.println("Connecting IMU...");
+    Serial.print("Connecting IMU");
     while (!imuManager.begin(Pin::IMU_SDA, Pin::IMU_SCL)) {
         Serial.print(".");
         delay(500);
@@ -98,7 +106,7 @@ void setup() {
     webAppServer.begin(Network::SSID, Network::PASSWORD);
 
     // Initialize Zenoh communication manager with connection retries
-    Serial.println("Connecting Zenoh...");
+    Serial.print("Connecting Zenoh");
     while (!zenohManager.begin(Network::ROUTER_IP)) { 
         Serial.print(".");
         delay(300);
@@ -122,6 +130,7 @@ void loop() {
 
         // Safety check to halt movement if stopped, paused, or blocked
         if (is_stopped || is_paused || zenohManager.isObstacleDetected()) {
+            servo.write(ServoAngles::CLOSE_ANGLE);
             motorsController.move(0, 0);
             pidLeft.reset();
             pidRight.reset();
@@ -131,14 +140,18 @@ void loop() {
             Twist command = zenohManager.getLastCommand();
             
             // Calculate yaw correction and final wheel speeds
-            float corrected_angular_z = command.angular_z + pidYaw.circularCompute(command.angular_z, current_yaw, delta_time);
-            WheelSpeeds target_speeds = kinematicsManager.calculateWheelSpeeds(command.linear_x, corrected_angular_z);
+            // float corrected_angular_z = command.angular_z + pidYaw.circularCompute(command.angular_z, current_yaw, delta_time);
+            // WheelSpeeds target_speeds = kinematicsManager.calculateWheelSpeeds(command.linear_x, corrected_angular_z);
 
-            // Compute PWM outputs via individual wheel PID controllers
-            int out_left = (int)pidLeft.linealCompute(target_speeds.left, encoderHandler.getVelocityLeft(), delta_time);
-            int out_right = (int)pidRight.linealCompute(target_speeds.right, encoderHandler.getVelocityRight(), delta_time);
+            // // Compute PWM outputs via individual wheel PID controllers
+            // int out_left = (int)pidLeft.linealCompute(target_speeds.left, encoderHandler.getVelocityLeft(), delta_time);
+            // int out_right = (int)pidRight.linealCompute(target_speeds.right, encoderHandler.getVelocityRight(), delta_time);
+            // servo.write(ServoAngles::OPEN_ANGLE);
+            // motorsController.move(out_left, out_right);
             
-            motorsController.move(out_left, out_right);
+            WheelSpeeds target_speeds = kinematicsManager.calculateWheelSpeeds(command.linear_x, command.angular_z);
+            servo.write(ServoAngles::OPEN_ANGLE);
+            motorsController.move(target_speeds.left, target_speeds.right);
         }
 
         last_control_time = current_time;
@@ -151,7 +164,7 @@ void loop() {
             
             // Capture current encoder counts
             sensor_data.ticks_left = encoderHandler.getTicksLeft(); 
-            sensor_data.ticks_right   = encoderHandler.getTicksRight();   
+            sensor_data.ticks_right   = encoderHandler.getTicksRight();    
             
             // Capture current IMU readings
             sensor_data.accel_x = imuManager.getAccelX();         
